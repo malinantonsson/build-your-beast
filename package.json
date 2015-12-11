@@ -1,0 +1,29 @@
+{
+  "name": "build-your-beast",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.10.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malinantonsson/build-your-beast.git"
+  },
+  "author": "Malin Antonsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malinantonsson/build-your-beast/issues"
+  },
+  "homepage": "https://github.com/malinantonsson/build-your-beast#readme",
+  "description": ""
+}
