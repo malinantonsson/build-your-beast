@@ -6,6 +6,15 @@ var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
 
+var template = require('gulp-template');
+
+/* vars */
+var distPath = 'dist';
+var indexTmpl = 'src/index.html';
+
+var dataFolder = './src/data';
+var navData = require( dataFolder + '/nav.json');
+
 
 gulp.task('styles', function() {
   gulp.src('src/scss/*.scss')
@@ -18,6 +27,13 @@ gulp.task('styles', function() {
     .pipe(browserSync.reload({
       stream: true
     }));
+});
+
+//https://www.npmjs.com/package/gulp-template
+gulp.task('build:tabs', function () {
+  return gulp.src(indexTmpl)
+    .pipe(template( {data: navData}))
+    .pipe(gulp.dest(distPath));
 });
 
 gulp.task('watch', ['browserSync', 'styles'], function() {

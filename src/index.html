@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Build your beast</title>
+</head>
+<body>
+	<% _.each(data, function(headSection, index) {  %>
+		<%= index %>
+		<ul class="nav-tabs">
+			<li class="nav-tab tab-<%= index %> <%= index %>"></li>
+		</ul>
+
+		<div class="nav-tabs-wrapper <%= index %>">
+			<div class="nab-tab-wrapper">
+			<% _.each(headSection, function(item, index) {  %>
+				<div class="nav-section">
+					<%= item.id %>
+					<%= item.svg %>
+				</div>
+
+				
+
+			<% }); %>
+		</div>
+
+	<% }); %>
+</body>
+</html>
+
