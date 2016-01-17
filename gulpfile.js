@@ -17,7 +17,7 @@ var navData = require( dataFolder + '/nav.json');
 
 
 gulp.task('styles', function() {
-  gulp.src('src/scss/*.scss')
+  gulp.src('src/sass/*.scss')
   	.pipe(sourcemaps.init()) // Initialize sourcemap plugin
     .pipe(sass()) 
     .pipe(autoprefixer()) // Passes it through gulp-autoprefixer 
@@ -33,18 +33,23 @@ gulp.task('styles', function() {
 gulp.task('build:tabs', function () {
   return gulp.src(indexTmpl)
     .pipe(template( {data: navData}))
-    .pipe(gulp.dest(distPath));
+    .pipe(gulp.dest(distPath))
+    // Reloading the stream
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
-gulp.task('watch', ['browserSync', 'styles'], function() {
-  gulp.watch('src/scss/*.scss', ['styles']);
+gulp.task('watch', ['browserSync', 'styles', 'build:tabs'], function() {
+  gulp.watch('src/sass/*.scss', ['styles']);
+  gulp.watch(indexTmpl, ['build:tabs']);
 });
 
 // Start browserSync server
 gulp.task('browserSync', function() {
   browserSync({
     server: {
-      baseDir: 'src'
+      baseDir: 'dist'
     }
   })
 });
