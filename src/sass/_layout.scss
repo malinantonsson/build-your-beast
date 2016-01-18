@@ -1,2 +1,21 @@
-body { @include container(80em); }
-nav { @include span(25%); }
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+	background-image: url('/images/background-image.jpg');
+  background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.byb-container {
+	@include outer-container;
+	//background-color: #000;	
+
+	@include mq(from, xlarge) {
+		max-width: 1025px;
+	}
+}

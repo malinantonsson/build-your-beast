@@ -7,6 +7,12 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
 
 var template = require('gulp-template');
+var $            = require('gulp-load-plugins')();
+var runSequence  = require('run-sequence');
+var del          = require('del');
+var reload       = browserSync.reload;
+var argv         = require('yargs').argv;
+var lazypipe     = require('lazypipe');
 
 /* vars */
 var distPath = 'dist';
@@ -14,6 +20,24 @@ var indexTmpl = 'src/index.html';
 
 var dataFolder = './src/data';
 var navData = require( dataFolder + '/nav.json');
+
+var config = {
+  defaultPort: 3000,
+  supportedBrowsers: [
+    'ie >= 9',
+    'last 1 Firefox versions',
+    'last 1 Chrome versions',
+    'Safari >= 6',
+    'iOS >= 6',
+    'ChromeAndroid >= 4.2'
+  ],
+  version: require('./package.json').version,
+  minify: argv.minify || false
+};
+
+// Clean site directory
+gulp.task('clean', del.bind(null, ['dist'], {dot: true}));
+
 
 
 gulp.task('styles', function() {
@@ -40,16 +64,102 @@ gulp.task('build:tabs', function () {
     }));
 });
 
-gulp.task('watch', ['browserSync', 'styles', 'build:tabs'], function() {
+/*gulp.task('watch', ['browserSync', 'styles', 'build:tabs'], function() {
   gulp.watch('src/sass/*.scss', ['styles']);
   gulp.watch(indexTmpl, ['build:tabs']);
+});*/
+
+var scriptsFinish = lazypipe()
+  .pipe(gulp.dest, 'dist/scripts')
+  .pipe(function () {
+    return $.if(config.minify, $.uglify());
+  })
+  .pipe(function () {
+    return $.if(config.minify, $.rename({suffix: '.min'}));
+  })
+  .pipe(function () {
+    return $.if(config.minify, gulp.dest('dist/scripts'));
+  });
+
+// Lint and build scripts
+gulp.task('scripts', function() {
+  return gulp.src(['src/scripts/**/*.js'])
+    .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
+    .pipe($.if(config.isWatching, $.jshint()))
+    .pipe($.if(config.isWatching, $.jshint.reporter('jshint-stylish')))
+    .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
+    .pipe($.concat('scripts.js'))
+    .pipe(scriptsFinish());
 });
 
-// Start browserSync server
-gulp.task('browserSync', function() {
+// Copy web fonts to dist
+gulp.task('fonts', function () {
+  return gulp.src(['src/fonts/*.otf'])
+    .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
+    .pipe(gulp.dest('dist/fonts'));
+});
+
+// Copy videos to dist
+gulp.task('video', function () {
+  return gulp.src(['src/video/converted/**'])
+    .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
+    .pipe(gulp.dest('dist/video'));
+});
+
+// Copy html files to dist
+gulp.task('html', function () {
+  return gulp.src(['src/*.html'])
+    .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
+    .pipe(gulp.dest('dist'));
+});
+
+// Optimize images and copy that version to dist
+// if the script is run with the --minify flag
+gulp.task('images', function () {
+  return gulp.src(['src/images/**/**'])
+    .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
+    .pipe($.if(config.isWatching, $.cached('images')))
+    .pipe($.if(config.minify, $.cache($.imagemin({
+      progressive: true,
+      interlaced: true
+    }))))
+    .pipe(gulp.dest('dist/images'));
+});
+
+gulp.task('setWatch', function() {
+  config.isWatching = true;
+});
+
+// Development task
+gulp.task('dev', ['default', 'setWatch'], function() {
   browserSync({
-    server: {
-      baseDir: 'dist'
-    }
-  })
+    port: argv.port || config.defaultPort, //default: 3000
+    server: { baseDir: './dist/'},
+    ui: {
+      port: argv.port + 5000 || config.defaultPort + 5000, //default: 8000
+      weinre: { port: argv.port + 6092 || config.defaultPort + 6092 } //default: 9092
+    },
+    notify: false,
+    logLevel: 'silent' //other oprions: info, debug
+  });
+
+  gulp.watch(['src/styles/**/*.styl'], ['styles', reload]);
+  gulp.watch(['src/*.html'], ['html', reload]);
+  gulp.watch(['src/fonts/**'], ['fonts', reload]);
+  gulp.watch(['src/img/**/*'], ['images', reload]);
+  gulp.watch(['src/scripts/*.js'], ['scripts', reload]);
+  gulp.watch(['src/video/converted/**'], ['video', reload]);
+});
+
+// Build production files, the default task
+gulp.task('default', ['clean'], function (cb) {
+
+  runSequence([
+      'html',
+      'styles',
+      'scripts',
+      'fonts',
+      'images',
+      'video'
+    ], cb);
 });

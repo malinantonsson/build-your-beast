@@ -1,0 +1,66 @@
+$grid-columns: 12;
+
+$breakpoints: (
+	small: 480px,
+	medium: 768px,
+	large: 967px,
+	xlarge: 1024px
+);
+
+$colours: (
+	base: (
+		green: #02583f,
+		red: #a7361d,
+		pink: #ed6171
+
+	),
+	copy: (
+		green: #868686,
+		red: #454545,
+		pink: #606060
+	)
+);
+
+/*
+List of font sizes / attributes
+The null key == default styles (no media query)
+Values can be one value (size) as px or a list of type attributes e.g.:
+(size, color, weight, line-height, letter-spacing, text-transform)
+null values in the list will be ommitted
+ */
+$type-formatting: (
+	h1: (
+		null: (34px, null, 400, null, .02em, uppercase),
+		small: 36px,
+		medium: 42px,
+		large: 60px,
+		xlarge: 64px,
+	),
+	h2: (
+		null: (34px, null, 400, null, .02em, uppercase),
+		small: 36px,
+		medium: 42px,
+		large: 60px,
+		xlarge: 64px,
+	),
+	h3: (
+		null: (34px, null, 400, null, .02em, uppercase),
+		small: 36px,
+		medium: 42px,
+		large: 60px,
+		xlarge: 64px,
+	),
+	p: (
+		null: (34px, null, 400, null, .02em, uppercase),
+		small: 36px,
+		medium: 42px,
+		large: 60px,
+		xlarge: 64px,
+	)
+);
+
+/*  Assign to vars - then use in type placeholders _placeholders.scss  */
+$type-formatting-h1: map-get($type-formatting, 'h1');
+$type-formatting-h2: map-get($type-formatting, 'h2');
+$type-formatting-h3: map-get($type-formatting, 'h3');
+$type-formatting-p: map-get($type-formatting, 'p');
