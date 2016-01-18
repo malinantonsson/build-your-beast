@@ -1,7 +1,13 @@
 
 // Import Susy
 @import "bower_components/susy/sass/susy";
+@import "bower_components/bourbon/app/assets/stylesheets/bourbon";
+
 
 @import 'face';
 @import 'layout';
+
+$susy: (
+  	global-box-sizing: border-box
+ );
 
