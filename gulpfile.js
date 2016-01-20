@@ -5,6 +5,7 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
+var extender = require('gulp-html-extend');
 
 var template = require('gulp-template');
 var $            = require('gulp-load-plugins')();
@@ -15,10 +16,15 @@ var argv         = require('yargs').argv;
 var lazypipe     = require('lazypipe');
 
 /* vars */
+var appPath = './src';
 var distPath = 'dist';
-var indexTmpl = 'src/index.html';
+var indexTmpl = appPath + '/index.html';
+var partialsFolder =  './src/partials/';
+var pageBuildSrc = partialsFolder + '**/*.html';
+var partialsTemplateFolder = partialsFolder + '_master/templates/';
 
-var dataFolder = './src/data';
+
+var dataFolder = appPath + '/data';
 var navData = require( dataFolder + '/nav.json');
 
 var config = {
@@ -125,6 +131,17 @@ gulp.task('images', function () {
     }))))
     .pipe(gulp.dest('dist/images'));
 });
+
+/* 
+Builds out and compiles all the template pages  
+*/
+gulp.task('build:pages', [], function () {
+    return  gulp.src( pageBuildSrc )
+        .pipe(extender({annotations:false,verbose:false}))
+        .pipe(gulp.dest( appPath ));
+});
+
+
 
 gulp.task('setWatch', function() {
   config.isWatching = true;
