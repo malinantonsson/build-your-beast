@@ -75,19 +75,11 @@ gulp.task('build:nav', function () {
 /* 
 Builds out and compiles all the template pages  
 */
-gulp.task('build:pages', [], function () {
+gulp.task('build:pages', ['build:nav'], function () {
     return  gulp.src( pageBuildSrc )
         .pipe(extender({annotations:false,verbose:false}))
         .pipe(gulp.dest( distPath ));
 });
-
-
-
-
-/*gulp.task('watch', ['browserSync', 'styles', 'build:tabs'], function() {
-  gulp.watch('src/sass/*.scss', ['styles']);
-  gulp.watch(indexTmpl, ['build:tabs']);
-});*/
 
 var scriptsFinish = lazypipe()
   .pipe(gulp.dest, 'dist/scripts')
@@ -126,13 +118,6 @@ gulp.task('video', function () {
     .pipe(gulp.dest('dist/video'));
 });
 
-// Copy html files to dist
-gulp.task('html', function () {
-  return gulp.src(['src/*.html'])
-    .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
-    .pipe(gulp.dest('dist'));
-});
-
 // Optimize images and copy that version to dist
 // if the script is run with the --minify flag
 gulp.task('images', function () {
@@ -168,7 +153,7 @@ gulp.task('dev', ['default', 'setWatch'], function() {
   });
 
   gulp.watch(['src/styles/**/*.styl'], ['styles', reload]);
-  gulp.watch(['src/*.html'], ['html', reload]);
+  gulp.watch(['src/partials/*.html'], ['build:pages', reload]);
   gulp.watch(['src/fonts/**'], ['fonts', reload]);
   gulp.watch(['src/img/**/*'], ['images', reload]);
   gulp.watch(['src/scripts/*.js'], ['scripts', reload]);
@@ -179,7 +164,8 @@ gulp.task('dev', ['default', 'setWatch'], function() {
 gulp.task('default', ['clean'], function (cb) {
 
   runSequence([
-      'html',
+      'build:nav',
+      'build:pages',
       'styles',
       'scripts',
       'fonts',
