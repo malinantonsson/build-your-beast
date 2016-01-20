@@ -18,10 +18,12 @@ var lazypipe     = require('lazypipe');
 /* vars */
 var appPath = './src';
 var distPath = 'dist';
-var indexTmpl = appPath + '/index.html';
+//var indexTmpl = appPath + '/index.html';
 var partialsFolder =  './src/partials/';
-var pageBuildSrc = partialsFolder + '**/*.html';
+var navTempl = partialsFolder + 'nav.html';
+var pageBuildSrc = partialsFolder + 'index.html';
 var partialsTemplateFolder = partialsFolder + '_master/templates/';
+var generatedNav = partialsFolder + '_master/globals/';
 
 
 var dataFolder = appPath + '/data';
@@ -60,15 +62,27 @@ gulp.task('styles', function() {
 });
 
 //https://www.npmjs.com/package/gulp-template
-gulp.task('build:tabs', function () {
-  return gulp.src(indexTmpl)
+gulp.task('build:nav', function () {
+  return gulp.src(navTempl)
     .pipe(template( {data: navData}))
-    .pipe(gulp.dest(distPath))
+    .pipe(gulp.dest(generatedNav))
     // Reloading the stream
     .pipe(browserSync.reload({
       stream: true
     }));
 });
+
+/* 
+Builds out and compiles all the template pages  
+*/
+gulp.task('build:pages', [], function () {
+    return  gulp.src( pageBuildSrc )
+        .pipe(extender({annotations:false,verbose:false}))
+        .pipe(gulp.dest( distPath ));
+});
+
+
+
 
 /*gulp.task('watch', ['browserSync', 'styles', 'build:tabs'], function() {
   gulp.watch('src/sass/*.scss', ['styles']);
@@ -132,14 +146,7 @@ gulp.task('images', function () {
     .pipe(gulp.dest('dist/images'));
 });
 
-/* 
-Builds out and compiles all the template pages  
-*/
-gulp.task('build:pages', [], function () {
-    return  gulp.src( pageBuildSrc )
-        .pipe(extender({annotations:false,verbose:false}))
-        .pipe(gulp.dest( appPath ));
-});
+
 
 
 
