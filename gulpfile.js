@@ -15,6 +15,9 @@ var reload       = browserSync.reload;
 var argv         = require('yargs').argv;
 var lazypipe     = require('lazypipe');
 var fc2json = require('gulp-file-contents-to-json');
+var svgmin = require('gulp-svgmin');
+
+
 
 /* vars */
 var appPath = './src';
@@ -48,6 +51,16 @@ var config = {
 
 // Clean site directory
 gulp.task('clean', del.bind(null, ['dist'], {dot: true}));
+
+
+
+gulp.task('svgs-min', function () {
+    return gulp.src(svgFolder + '**/*')
+        .pipe(svgmin())
+        .pipe(gulp.dest('./src/svg-min/'));
+});
+
+
 
 
 
