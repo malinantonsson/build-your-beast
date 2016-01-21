@@ -14,6 +14,7 @@ var del          = require('del');
 var reload       = browserSync.reload;
 var argv         = require('yargs').argv;
 var lazypipe     = require('lazypipe');
+var fc2json = require('gulp-file-contents-to-json');
 
 /* vars */
 var appPath = './src';
@@ -27,7 +28,9 @@ var generatedNav = partialsFolder + '_master/globals/';
 
 
 var dataFolder = appPath + '/data';
-var navData = require( dataFolder + '/nav.json');
+var navData = require( dataFolder + '/data.json');
+
+var svgFolder = appPath + '/svgs/';
 
 var config = {
   defaultPort: 3000,
@@ -79,6 +82,14 @@ gulp.task('build:pages', ['build:nav'], function () {
     return  gulp.src( pageBuildSrc )
         .pipe(extender({annotations:false,verbose:false}))
         .pipe(gulp.dest( distPath ));
+});
+
+
+
+gulp.task('create-json-blob', function() {
+  gulp.src(svgFolder + '/**/*')
+      .pipe(fc2json('data.json'))
+      .pipe(gulp.dest(dataFolder));
 });
 
 var scriptsFinish = lazypipe()
