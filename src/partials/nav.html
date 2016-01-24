@@ -1,8 +1,10 @@
-<% _.each(data, function(headSection, index) {  %>
-		<%= index %>
-		<%= headSection %>
-		
-			<% _.each(headSection, function(item, index) {  %>
-					<%= item %>
-			<% }); %>
-<% }); %>
+<section class='nav-tabs'>
+	<% _.each(data, function(headSvgs, headPart) {  %>
+			<%= headPart %>
+			
+				<% _.each(headSvgs, function(item, id) {  %>
+						<%= item %>
+						<%= id %>
+				<% }); %>
+	<% }); %>
+</section>

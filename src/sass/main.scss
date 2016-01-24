@@ -8,6 +8,8 @@
 @import 'mixins/typography';
 @import 'mixins/map-deep-get';
 @import 'mixins/media';
+@import 'mixins/fluid-image-container';
+@import 'mixins/center-crop-absolute';
 
 
 @import 'variables';
@@ -16,6 +18,7 @@
 @import 'face';
 @import 'layout';
 
-
-
-
+.nav-tabs svg {
+	max-width: 100px;
+	display: none;
+}

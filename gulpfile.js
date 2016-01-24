@@ -18,7 +18,6 @@ var fc2json = require('gulp-file-contents-to-json');
 var svgmin = require('gulp-svgmin');
 
 
-
 /* vars */
 var appPath = './src';
 var distPath = 'dist';
@@ -61,11 +60,8 @@ gulp.task('svgs-min', function () {
 });
 
 
-
-
-
 gulp.task('styles', function() {
-  gulp.src('src/sass/*.scss')
+  gulp.src('src/sass/**/*.scss')
   	.pipe(sourcemaps.init()) // Initialize sourcemap plugin
     .pipe(sass()) 
     .pipe(autoprefixer()) // Passes it through gulp-autoprefixer 
@@ -94,15 +90,25 @@ Builds out and compiles all the template pages
 gulp.task('build:pages', ['build:nav'], function () {
     return  gulp.src( pageBuildSrc )
         .pipe(extender({annotations:false,verbose:false}))
-        .pipe(gulp.dest( distPath ));
+        .pipe(gulp.dest( distPath ))
+        .pipe(browserSync.reload({
+          stream: true
+        }));
 });
 
 
 
 gulp.task('create-json-blob', function() {
   gulp.src(svgFolder + '/**/*')
-      .pipe(fc2json('data.json'))
+      .pipe(fc2json('data.json', {
+        extname : false, // default is true
+      }))
       .pipe(gulp.dest(dataFolder));
+});
+
+gulp.task('libs', function() {
+  return gulp.src(['src/js/libs/modernizr.js'])
+  .pipe(gulp.dest(distPath + '/js/'));
 });
 
 var scriptsFinish = lazypipe()
@@ -114,17 +120,17 @@ var scriptsFinish = lazypipe()
     return $.if(config.minify, $.rename({suffix: '.min'}));
   })
   .pipe(function () {
-    return $.if(config.minify, gulp.dest('dist/scripts'));
+    return $.if(config.minify, gulp.dest('dist/js'));
   });
 
 // Lint and build scripts
-gulp.task('scripts', function() {
-  return gulp.src(['src/scripts/**/*.js'])
+gulp.task('scripts', ['libs'], function() {
+  return gulp.src(['src/js/*.js'])
     .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
     .pipe($.if(config.isWatching, $.jshint()))
     .pipe($.if(config.isWatching, $.jshint.reporter('jshint-stylish')))
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
-    .pipe($.concat('scripts.js'))
+    //.pipe($.concat('scripts.js'))
     .pipe(scriptsFinish());
 });
 
@@ -176,8 +182,9 @@ gulp.task('dev', ['default', 'setWatch'], function() {
     logLevel: 'silent' //other oprions: info, debug
   });
 
-  gulp.watch(['src/styles/**/*.styl'], ['styles', reload]);
+  gulp.watch(['src/sass/**/*.scss'], ['styles', reload]);
   gulp.watch(['src/partials/*.html'], ['build:pages', reload]);
+  gulp.watch(['src/data/*.json'], ['build:pages', reload]);
   gulp.watch(['src/fonts/**'], ['fonts', reload]);
   gulp.watch(['src/img/**/*'], ['images', reload]);
   gulp.watch(['src/scripts/*.js'], ['scripts', reload]);

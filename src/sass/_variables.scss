@@ -21,6 +21,41 @@ $colours: (
 	)
 );
 
+$face-parts: ('crown', 'eyes', 'nose', 'mouth');
+
+$background-min-size: (
+	small: 610px,
+	medium: 760px,
+	large: 760px,
+	xlarge: 760px
+);
+$parts: (
+	crown: (
+		width: 480,
+		height: 210
+	),
+	eyes: (
+		width: 306,
+		height: 110
+	),
+	nose: (
+		width: 306,
+		height: 110
+	),
+	mouth: (
+		width: 306,
+		height: 177
+	)
+);
+
+$max-part-width: (
+	crown: 100%,
+	eyes: 63.75%,
+	nose: 63.75%,
+	mouth: 63.75%
+);
+
+
 /*
 List of font sizes / attributes
 The null key == default styles (no media query)

@@ -6,14 +6,32 @@ html {
 }
 
 body {
-	background-image: url('/images/background-image.jpg');
-  background-repeat: no-repeat;
-	background-size: contain;
+	margin: 0;
+	//padding: 0 $gutter/2;
 }
+
+.byb-outside-wrapper {
+	width: 100%;
+	position: absolute;
+}
+
+.byb-background-image {
+	position: absolute;
+	
+	@include mq(upto, large) {
+		@include center-crop-absolute();
+		height: map-get($background-min-size, small);
+
+	}
+
+	@include mq(from, large) {
+		width: 100%;
+	}
+}
+
 
 .byb-container {
 	@include outer-container;
-	//background-color: #000;	
 
 	@include mq(from, xlarge) {
 		max-width: 1025px;

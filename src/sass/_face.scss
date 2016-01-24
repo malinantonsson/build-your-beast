@@ -1,8 +1,28 @@
-.monster-canvas {
+.byb-canvas {
 	max-width: 600px;
 	margin: auto;
+	position: relative;
 }
 
-.monster-face {
+.byb-face {
+	position: absolute;
 	fill: #ed6171;
+	top: 0;
+}
+
+@each $part in $face-parts {
+	.byb-canvas-#{$part}-wrapper {
+		width: map-get($max-part-width, #{$part});
+		margin: auto;		
+	}
+
+	.byb-canvas-#{$part} {
+		margin: auto;
+		
+		@include fluid-image-container(
+            map-deep-get($parts, #{$part}, width),
+            map-deep-get($parts, #{$part}, height)
+        );
+		
+	}
 }
