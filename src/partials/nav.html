@@ -1,19 +1,26 @@
 <section  id="tabs" class="c-tabs no-js nav-tabs">
-<div class="c-tabs-nav">
-	<div class="tabs-nav">	
-		<a href="#" class="c-tabs-nav__link is-active"></a>
-    	
-    	<a href="#" class="c-tabs-nav__link"></a>
-	</div>
+	<div class="c-tabs-nav">
+		<div class="tabs-nav">
+
+			<% _.each(['colour', 'crown', 'eyes', 'nose', 'mouth', 'share'], function(name, index) {  %>
+				<a href="#" class="c-tabs-nav__link <% if (index == 0) { %> is-active <% } %>">
+					<%= name %>
+				</a>
+			<% }); %>
+
+		</div>
 
 
-	<div class="c-tab is-active">
-	    <div class="c-tab__content"></div>
-	  </div>
-	
-	<div class="c-tab">
-	    <div class="c-tab__content"></div>
+		<div class="c-tab is-active">
+		    <div class="c-tab__content"></div>
+		  </div>
+		
+		<div class="c-tab">
+		    <div class="c-tab__content"></div>
+		</div>
 	</div>
+</section>
+
 
 	<% _.each(data, function(headSvgs, headPart) {  %>
 			<%= headPart %>
@@ -24,5 +31,3 @@
 				<% }); %>
 	<% }); %>
 
-</div>
-</section>
