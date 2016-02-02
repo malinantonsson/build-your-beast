@@ -112,7 +112,7 @@ gulp.task('libs', function() {
 });
 
 var scriptsFinish = lazypipe()
-  .pipe(gulp.dest, 'dist/scripts')
+  .pipe(gulp.dest, 'dist/js/')
   .pipe(function () {
     return $.if(config.minify, $.uglify());
   })
@@ -187,7 +187,7 @@ gulp.task('dev', ['default', 'setWatch'], function() {
   gulp.watch(['src/data/*.json'], ['build:pages', reload]);
   gulp.watch(['src/fonts/**'], ['fonts', reload]);
   gulp.watch(['src/img/**/*'], ['images', reload]);
-  gulp.watch(['src/scripts/*.js'], ['scripts', reload]);
+  gulp.watch(['src/js/*.js'], ['scripts', reload]);
   gulp.watch(['src/video/converted/**'], ['video', reload]);
 });
 

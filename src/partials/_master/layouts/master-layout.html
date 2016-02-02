@@ -9,7 +9,7 @@
 
      <link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <script src="/js/modernizr.js" type="text/javascript" charset="utf-8" async defer></script>
+    
 
 </head>
 <body>
@@ -20,6 +20,19 @@
 
 	     <!-- @@placeholder = nav -->
 	</div>
+
+  <script src="/js/modernizr.js" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="/js/nav.js" type="text/javascript" charset="utf-8"></script>
+
+    <script>
+      var myTabs = window.tabs({
+        el: '#tabs',
+        tabNavigationLinks: '.c-tabs-nav__link',
+        tabContentContainers: '.c-tab'
+      });
+
+      myTabs.init();
+    </script>
 </body>
 
 </html>
