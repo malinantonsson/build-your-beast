@@ -31,7 +31,8 @@ body {
 
 
 .byb-container {
-	@include outer-container;
+	//@include outer-container;
+	margin: auto;
 
 	@include mq(from, xlarge) {
 		max-width: 1025px;

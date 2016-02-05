@@ -1,6 +1,9 @@
-
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700);
 @import "bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "bower_components/neat/app/assets/stylesheets/neat";
+
+
+$svgSprite: '../images/sprite.svg';
 
 /* ----------------------------------------------------------------------------- *\
    MIXINS
@@ -10,14 +13,19 @@
 @import 'mixins/media';
 @import 'mixins/fluid-image-container';
 @import 'mixins/center-crop-absolute';
+@import 'mixins/icon-sprites';
 
 
 @import 'variables';
 @import 'typography';
+@import 'sprite';
+@import 'icons';
 @import 'placeholders';
 @import 'face';
 @import 'layout';
 @import 'nav-tabs';
+
+
 
 .nav-tabs svg {
 	max-width: 100px;

@@ -13,3 +13,10 @@
 %paragraph {
 	@include type-format($type-formatting-p);
 }
+
+// Sets background image and size with IE fallback
+%sprite {
+    display: inline-block;
+    background-image: url(map-get($sprite, svgPath));
+    background-size: map-get($sprite, width) map-get($sprite, height);
+}

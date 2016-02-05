@@ -1,18 +1,24 @@
+$nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
+
 .c-tabs-nav {
-  display: flex;
-  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .c-tabs-nav__link {
-  flex: 1;
-  margin-right: 4px;
-  padding: 12px;
-  color: #fff;
-  background-color: #b3b3b3;
+  padding-top: 1em;
+  padding-bottom: 1em;
   text-align: center;
   transition: color 0.3s;
+  flex: 1 1 auto;
+  text-transform: uppercase;
+  color: map-deep-get($colours, copy, pink);
+  background-color: map-deep-get($colours, base, pink);
+  margin-right: 1px;
+
+  &:last-child {
+    margin-right: none;
+  }
 }
 
 .c-tabs-nav__link:last-child {
@@ -24,35 +30,10 @@
 }
 
 .c-tabs-nav__link.is-active {
-  color: #dc446e;
-  background-color: #e7e7e7;
+  background-color: map-deep-get($colours, base, gray);
+  color: #ffffff;
 }
 
-.c-tabs-nav__link i,
-.c-tabs-nav__link span {
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-}
-
-.c-tabs-nav__link i {
-  font-size: 18px;
-}
-
-.c-tabs-nav__link span {
-  display: none;
-  font-size: 18px;
-}
-
-@media all and (min-width: 720px) {
-  .c-tabs-nav__link i {
-    margin-bottom: 12px;
-    font-size: 22px;
-  }
-  .c-tabs-nav__link span {
-    display: block;
-  }
-}
 
 /**
  * Tab
@@ -64,8 +45,51 @@
 
 .c-tab.is-active {
   display: block;
+  background-color: map-deep-get($colours, base, gray);
 }
 
 .c-tab__content {
   padding: 1.5rem;
+}
+
+
+
+.nav-tabs {
+  margin-top: 3em;
+  background-color: map-deep-get($colours, base, gray);
+}
+
+.tabs-nav {
+  width: 100%;
+  display: flex;
+}
+
+
+.tab-content {
+  width: 100%;
+}
+
+@each $item in $nav-items {
+  .tab-link-#{$item} {
+
+    span {
+      display: none;
+    }
+
+    &:before {
+      @include sprite(#{$item});
+      content: '';
+    }
+
+    @include mq(from, large) {
+      &:before {
+        display: none;
+      }
+
+      span {
+        display: inline-block;
+      }
+    }
+    
+  }
 }

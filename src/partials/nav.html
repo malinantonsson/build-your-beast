@@ -1,39 +1,40 @@
-<section  id="tabs" class="c-tabs no-js nav-tabs">
+<section  id="tabs" class="c-tabs no-js nav-tabs byb-container">
 	<div class="c-tabs-nav">
 		<!--Nav tabs-->
 		<div class="tabs-nav">
 			<% _.each(['colour', 'crown', 'eyes', 'nose', 'mouth', 'share'], function(name, index) {  %>
-				<a href="#" class="c-tabs-nav__link <% if (index == 0) { %> is-active <% } %>">
-					<%= name %>
+				<a href="#" class="c-tabs-nav__link <% if (index == 0) { %> is-active <% } %> tab-link-<%= name %>">
+					<span><%= name %></span>
 				</a>
 			<% }); %>
 		</div>
-
-		<!-- Tab contents 
-			 Colour is first active tab -->
-		<div class="c-tab is-active">
-		    <div class="c-tab__content"> Colour</div>
-		 </div>
 		
-		<!-- Loop through svgs -->
-		<% _.each(data, function(headSvgs, headPart) {  %>
+		<div class="tab-content">
+			<!-- Tab contents 
+				 Colour is first active tab -->
+			<div class="c-tab is-active">
+			    <div class="c-tab__content"> Colour</div>
+			 </div>
+			
+			<!-- Loop through svgs -->
+			<% _.each(data, function(headSvgs, headPart) {  %>
+				<div class="c-tab">
+					<%= headPart %>
+
+					<% _.each(headSvgs, function(item, id) {  %>
+						<div class="c-tab__content">
+							<%= item %>
+							<span class="<%= headPart %>-<%= id %>"></span>
+						</div>
+					<% }); %>
+
+				</div>
+			<% }); %>
+
+			<!-- Share tab -->
 			<div class="c-tab">
-				<%= headPart %>
-
-				<% _.each(headSvgs, function(item, id) {  %>
-					<div class="c-tab__content">
-						<%= item %>
-						<span class="<%= headPart %>-<%= id %>"></span>
-					</div>
-				<% }); %>
-
-			</div>
-		<% }); %>
-
-		<!-- Share tab -->
-		<div class="c-tab">
-		    <div class="c-tab__content"> Share</div>
-		 </div>
-
+			    <div class="c-tab__content"> Share</div>
+			 </div>
+		</div>
 	</div>
 </section>

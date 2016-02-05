@@ -17,6 +17,12 @@ var lazypipe     = require('lazypipe');
 var fc2json = require('gulp-file-contents-to-json');
 var svgmin = require('gulp-svgmin');
 
+var gutil = require('gulp-util');
+var plugins = require("gulp-load-plugins")({
+    pattern: ['gulp-*', 'gulp.*'],
+    replaceString: /\bgulp[\-.]/
+});
+
 
 /* vars */
 var appPath = './src';
@@ -27,6 +33,9 @@ var navTempl = partialsFolder + 'nav.html';
 var pageBuildSrc = partialsFolder + 'index.html';
 var partialsTemplateFolder = partialsFolder + '_master/templates/';
 var generatedNav = partialsFolder + '_master/globals/';
+
+sassPath = appPath + '/sass/';
+sassSpriteTmpl = partialsTemplateFolder + 'sprite-template.scss';
 
 
 var dataFolder = appPath + '/data';
@@ -47,6 +56,40 @@ var config = {
   version: require('./package.json').version,
   minify: argv.minify || false
 };
+
+
+
+gulp.task('svgSprite', function () {
+
+    return gulp.src(appPath + '/icons/*.svg')
+        .pipe(svgmin())
+        .pipe(plugins.svgSprite({
+            "mode": {
+                "css": {
+                    "spacing": {
+                        "padding": 5
+                    },
+                    "dest": "./",
+                    "layout": "diagonal",
+                    "sprite": "../images/sprite.svg",
+                    "bust": false,
+                    "render": {
+                        "scss": {
+                            "dest": "_sprite.scss",
+                            "template": sassSpriteTmpl
+                        }
+                    }
+                }
+            }
+        }))
+        .pipe(gulp.dest(sassPath));
+
+});
+
+
+gulp.task('sprite', ['svgSprite']);
+
+
 
 // Clean site directory
 gulp.task('clean', del.bind(null, ['dist'], {dot: true}));
@@ -134,19 +177,7 @@ gulp.task('scripts', ['libs'], function() {
     .pipe(scriptsFinish());
 });
 
-// Copy web fonts to dist
-gulp.task('fonts', function () {
-  return gulp.src(['src/fonts/*.otf'])
-    .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
-    .pipe(gulp.dest('dist/fonts'));
-});
 
-// Copy videos to dist
-gulp.task('video', function () {
-  return gulp.src(['src/video/converted/**'])
-    .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
-    .pipe(gulp.dest('dist/video'));
-});
 
 // Optimize images and copy that version to dist
 // if the script is run with the --minify flag
@@ -185,10 +216,8 @@ gulp.task('dev', ['default', 'setWatch'], function() {
   gulp.watch(['src/sass/**/*.scss'], ['styles', reload]);
   gulp.watch(['src/partials/*.html'], ['build:pages', reload]);
   gulp.watch(['src/data/*.json'], ['build:pages', reload]);
-  gulp.watch(['src/fonts/**'], ['fonts', reload]);
   gulp.watch(['src/img/**/*'], ['images', reload]);
   gulp.watch(['src/js/*.js'], ['scripts', reload]);
-  gulp.watch(['src/video/converted/**'], ['video', reload]);
 });
 
 // Build production files, the default task
@@ -199,8 +228,6 @@ gulp.task('default', ['clean'], function (cb) {
       'build:pages',
       'styles',
       'scripts',
-      'fonts',
-      'images',
-      'video'
+      'images'
     ], cb);
 });
