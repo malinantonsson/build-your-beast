@@ -4,6 +4,9 @@
 		<div class="tabs-nav">
 			<% _.each(['colour', 'crown', 'eyes', 'nose', 'mouth', 'share'], function(name, index) {  %>
 				<a href="#" class="c-tabs-nav__link <% if (index == 0) { %> is-active <% } %> tab-link-<%= name %>">
+					<svg class="tabs-nav-icon">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/sprite.svg#<%= name %>"></use>
+                    </svg>
 					<span><%= name %></span>
 				</a>
 			<% }); %>
@@ -35,13 +38,14 @@
 				<div class="c-tab">
 					<%= headPart %>
 
+					<div class="c-tab__content">
 					<% _.each(headSvgs, function(item, id) {  %>
-						<div class="c-tab__content">
 							<%= item %>
+							<%= id %>
 							<span class="<%= headPart %>-<%= id %>"></span>
-						</div>
+						
 					<% }); %>
-
+					</div>
 				</div>
 			<% }); %>
 

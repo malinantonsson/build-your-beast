@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700);
-@import "bower_components/bourbon/app/assets/stylesheets/bourbon";
-@import "bower_components/neat/app/assets/stylesheets/neat";
+@import "src/js/libs/bourbon/app/assets/stylesheets/bourbon";
+@import "src/js/libs/neat/app/assets/stylesheets/neat";
 
 
 $svgSprite: '../images/sprite.svg';
@@ -28,7 +28,7 @@ $svgSprite: '../images/sprite.svg';
 
 
 
-.nav-tabs svg {
+.tab-content svg {
 	max-width: 100px;
 	display: none;
 }

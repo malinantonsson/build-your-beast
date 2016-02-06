@@ -1,9 +1,9 @@
 $icons: (
-      sprite: (width: 144px, height: 144px, pngPath: '../images/sprite.png', svgPath: '../images/sprite.svg'),
+      sprite: (width: 72px, height: 48px, pngPath: '../images/sprite.png', svgPath: '../images/sprite.svg'),
     colour: (width: 24px, height: 24px, backgroundX: 0px, backgroundY: 0px),
-    crown: (width: 24px, height: 24px, backgroundX: -24px, backgroundY: -24px),
-    eyes: (width: 24px, height: 24px, backgroundX: -48px, backgroundY: -48px),
-    mouth: (width: 24px, height: 24px, backgroundX: -72px, backgroundY: -72px),
-    nose: (width: 24px, height: 24px, backgroundX: -96px, backgroundY: -96px),
-    share: (width: 24px, height: 24px, backgroundX: -120px, backgroundY: -120px),
+    crown: (width: 24px, height: 24px, backgroundX: -24px, backgroundY: 0px),
+    eyes: (width: 24px, height: 24px, backgroundX: 0px, backgroundY: -24px),
+    mouth: (width: 24px, height: 24px, backgroundX: -24px, backgroundY: -24px),
+    nose: (width: 24px, height: 24px, backgroundX: -48px, backgroundY: 0px),
+    share: (width: 24px, height: 24px, backgroundX: -48px, backgroundY: -24px),
 );

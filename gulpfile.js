@@ -42,6 +42,7 @@ var dataFolder = appPath + '/data';
 var navData = require( dataFolder + '/data.json');
 
 var svgFolder = appPath + '/svgs/';
+var svgMinFolder = appPath + '/svg-min/';
 
 var config = {
   defaultPort: 3000,
@@ -66,11 +67,7 @@ gulp.task('svgSprite', function () {
         .pipe(plugins.svgSprite({
             "mode": {
                 "css": {
-                    "spacing": {
-                        "padding": 5
-                    },
                     "dest": "./",
-                    "layout": "diagonal",
                     "sprite": "../images/sprite.svg",
                     "bust": false,
                     "render": {
@@ -142,7 +139,7 @@ gulp.task('build:pages', ['build:nav'], function () {
 
 
 gulp.task('create-json-blob', function() {
-  gulp.src(svgFolder + '/**/*')
+  gulp.src(svgMinFolder + '/**/*')
       .pipe(fc2json('data.json', {
         extname : false, // default is true
       }))

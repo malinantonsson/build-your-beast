@@ -17,13 +17,23 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   margin-right: 1px;
 
   &:last-child {
-    margin-right: none;
+    margin-right: 0px;
+  }
+
+  .active-colour-green & {
+    color: map-deep-get($colours, copy, green);
+    background-color: map-deep-get($colours, base, green); 
+  }
+
+  .active-colour-red & {
+    color: map-deep-get($colours, copy, red);
+    background-color: map-deep-get($colours, base, red); 
   }
 }
 
-.c-tabs-nav__link:last-child {
+/* .c-tabs-nav__link:last-child {
   margin-right: 0;
-}
+} */
 
 .c-tabs-nav__link:hover {
   color: #6d6d6d;
@@ -83,6 +93,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 }
 
 .tab-content-colour {
+  cursor: pointer;
   border: .3em solid map-deep-get($colours, grays, colour-border);
 
   @include span-columns(3 of 10);
@@ -98,34 +109,38 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   }
 }
 
+
 .tab-content-colour-block {
   padding-bottom: 100%;
   height: 0;
   position: relative;
   width: 100%;
-
 }
 
-@each $item in $nav-items {
-  .tab-link-#{$item} {
+.tabs-nav-icon {
+  display: inline;
+  max-width: 24px;
+  max-height: 24px;
+  
+  fill: map-deep-get($colours, copy, pink);
 
-    span {
+  .is-active & {
+    fill: #fff;
+  }
+}
+
+.c-tabs-nav__link {
+  span {
+    display: none;
+  }
+
+  @include mq(from, medium) {
+    .tabs-nav-icon {
       display: none;
     }
 
-    &:before {
-      @include sprite(#{$item});
-      content: '';
-    }
-
-    @include mq(from, large) {
-      &:before {
-        display: none;
-      }
-
-      span {
-        display: inline-block;
-      }
+    span {
+      display: inline-block;
     }
   }
 }
