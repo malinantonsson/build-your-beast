@@ -1,0 +1,12 @@
+.colour-pink {
+  background-color: map-deep-get($colours, base, pink);
+}
+
+.colour-red {
+  background-color: map-deep-get($colours, base, red);
+}
+
+.colour-green {
+  background-color: map-deep-get($colours, base, green);
+}
+

@@ -19,8 +19,15 @@ $colours: (
 		green: #868686,
 		red: #454545,
 		pink: #606060
+	),
+	grays: (
+		tabs: #606060,
+		colour-border: #565656,
+		border-is-active: #787878
 	) 
 );
+
+$colour-selection-border: #565656;
 
 $face-parts: ('crown', 'eyes', 'nose', 'mouth');
 
