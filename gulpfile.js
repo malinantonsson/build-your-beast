@@ -147,7 +147,7 @@ gulp.task('create-json-blob', function() {
 });
 
 gulp.task('libs', function() {
-  return gulp.src(['src/js/libs/modernizr.js'])
+  return gulp.src(['src/js/libs/*.js'])
   .pipe(gulp.dest(distPath + '/js/'));
 });
 
@@ -170,7 +170,7 @@ gulp.task('scripts', ['libs'], function() {
     .pipe($.if(config.isWatching, $.jshint()))
     .pipe($.if(config.isWatching, $.jshint.reporter('jshint-stylish')))
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
-    //.pipe($.concat('scripts.js'))
+    .pipe($.concat('scripts.js'))
     .pipe(scriptsFinish());
 });
 
@@ -214,7 +214,7 @@ gulp.task('dev', ['default', 'setWatch'], function() {
   gulp.watch(['src/partials/*.html'], ['build:pages', reload]);
   gulp.watch(['src/data/*.json'], ['build:pages', reload]);
   gulp.watch(['src/img/**/*'], ['images', reload]);
-  gulp.watch(['src/js/*.js'], ['scripts', reload]);
+  gulp.watch(['src/js/**/*.js'], ['scripts', reload]);
 });
 
 // Build production files, the default task

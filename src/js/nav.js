@@ -30,7 +30,7 @@
 	};
 
     var goToTab = function(index) {
-    	console.log(index);
+    	//console.log(index);
 		if (index !== activeIndex && index >= 0 && index <= tabNavigationLinks.length) {
 		    tabNavigationLinks[activeIndex].classList.remove('is-active');
 		    tabNavigationLinks[index].classList.add('is-active');

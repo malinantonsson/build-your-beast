@@ -27,8 +27,23 @@ $svgSprite: '../images/sprite.svg';
 @import 'generic';
 
 
-
 .tab-content svg {
-	max-width: 100px;
-	display: none;
+	width: 100px;
+	//display: none;
+	display: block;
+}
+
+/* .sliding-test {
+	width: 200px;
+	height: 100px;
+	border: 1px solid #000;
+} */
+
+.slide {
+	width: 205px!important;
+	height: 100%;
+}
+
+.slider-crown {
+	width: 1025px;
 }

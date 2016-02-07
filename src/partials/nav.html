@@ -16,7 +16,7 @@
 			<!-- Tab contents 
 				 Colour is first active tab -->
 			<div class="c-tab is-active">
-			    <div class="c-tab__content"> 
+			    <div class="c-tab__content c-tab__content-colour"> 
 					<div class="tab-content-colour colour-pink is-active">
 						<div class="tab-content-colour-block"></div>
 					</div>
@@ -38,12 +38,14 @@
 				<div class="c-tab">
 					<%= headPart %>
 
-					<div class="c-tab__content">
+					<div class="c-tab__content <%= headPart %> slider-<%= headPart %>">
 					<% _.each(headSvgs, function(item, id) {  %>
+						<div class="slide">
 							<%= item %>
 							<%= id %>
+							
 							<span class="<%= headPart %>-<%= id %>"></span>
-						
+						</div>
 					<% }); %>
 					</div>
 				</div>

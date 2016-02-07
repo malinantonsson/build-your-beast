@@ -59,6 +59,10 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 }
 
 .c-tab__content {
+  width: 100%;
+}
+
+.c-tab__content-colour {
   padding-top: 1em;
   padding-bottom: 1em;
   overflow: auto;
@@ -76,6 +80,8 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
     @include shift(3);
   }
 }
+
+
 
 .nav-tabs {
   margin-top: 3em;
