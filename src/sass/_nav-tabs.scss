@@ -31,9 +31,6 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   }
 }
 
-/* .c-tabs-nav__link:last-child {
-  margin-right: 0;
-} */
 
 .c-tabs-nav__link:hover {
   color: #6d6d6d;
@@ -60,6 +57,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 
 .c-tab__content {
   width: 100%;
+  height: 100%!important;
 }
 
 .c-tab__content-colour {
@@ -149,4 +147,26 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
       display: inline-block;
     }
   }
+}
+
+.slide {
+  @include vertical-align();
+
+}
+.slide svg {
+  margin: auto;
+  @include vertical-align();
+}
+
+.bx-prev svg{
+  transform: rotate(180deg);
+}
+
+.bx-viewport {
+  height: 210px!important;
+}
+
+.tab-content-icon-link {
+  display: block;
+  height: 100%;
 }

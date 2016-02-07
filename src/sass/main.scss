@@ -14,6 +14,7 @@ $svgSprite: '../images/sprite.svg';
 @import 'mixins/fluid-image-container';
 @import 'mixins/center-crop-absolute';
 @import 'mixins/icon-sprites';
+@import 'mixins/vertical-align';
 
 
 @import 'variables';
@@ -28,16 +29,10 @@ $svgSprite: '../images/sprite.svg';
 
 
 .tab-content svg {
-	width: 100px;
-	//display: none;
+	width: 170px;
 	display: block;
 }
 
-/* .sliding-test {
-	width: 200px;
-	height: 100px;
-	border: 1px solid #000;
-} */
 
 .slide {
 	width: 205px!important;
