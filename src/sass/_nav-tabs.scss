@@ -163,7 +163,56 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 }
 
 .bx-viewport {
-  height: 210px!important;
+  height: 160px!important;
+  padding-right: 2em;
+  padding-left: 2em;
+  position: relative;
+
+  &:after,
+  &:before {
+    background-color:  map-deep-get($colours, base, gray);
+    z-index: 10;
+    position: absolute; 
+    top: 0;
+    width: 2em;
+    height: 160px;
+    content: '';
+  }
+
+  &:after {
+    right:0;
+  }
+
+  &:before {
+    left: 0;
+  }
+}
+
+.bx-wrapper {
+  position: relative;
+}
+.bx-prev,
+.bx-next {
+  position: absolute;
+  @include vertical-align(absolute);
+  z-index: 11;
+  fill: map-deep-get($colours, base, pink);
+
+  .active-colour-green & {
+    fill: map-deep-get($colours, base, green); 
+  }
+
+  .active-colour-red & {
+    fill: map-deep-get($colours, base, red); 
+  }
+}
+
+.bx-next {
+  right: .3em;
+}
+
+.bx-prev {
+  left: .3em;
 }
 
 .tab-content-icon-link {
