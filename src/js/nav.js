@@ -9,6 +9,7 @@
     var tabContentContainers = el.querySelectorAll(options.tabContentContainers);
     var activeIndex = 0;
     var initCalled = false;
+    var carousel;
 
     var init = function() {
 		if (!initCalled) {
@@ -37,6 +38,9 @@
 		    tabContentContainers[activeIndex].classList.remove('is-active');
 		    tabContentContainers[index].classList.add('is-active');
 		    activeIndex = index;
+
+			carousel = tabContentContainers[activeIndex].querySelectorAll('.slider');	    
+			initCarousel(carousel);
 		}
 	};
 

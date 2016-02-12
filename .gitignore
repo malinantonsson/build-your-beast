@@ -3,7 +3,8 @@
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 bower_components
-src/js/libs
+src/js/libs/bourbon
+src/js/libs/neat
 dist
 designs
 src/svgs
