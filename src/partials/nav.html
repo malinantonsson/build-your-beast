@@ -33,14 +33,15 @@
 			    </div>
 			 </div>
 			
+			
 			<!-- Loop through svgs -->
 			<% _.each(data, function(headSvgs, headPart) {  %>
 				<div class="c-tab">
 
-					<div class="c-tab__content <%= headPart %> slider slider-<%= headPart %>">
+					<div id="<%= headPart %>" class="c-tab__content <%= headPart %> slider slider-<%= headPart %>">
 					<% _.each(headSvgs, function(item, id) {  %>
 						<div class="slide">
-							<a href="#" class="<%= headPart %>-<%= id %> tab-content-icon-link">
+							<a id="<%= headPart %>-<%= id %>" href="#" class="<%= headPart %>-<%= id %> tab-content-icon-link">
 								<%= item %>
 							</a>
 						</div>

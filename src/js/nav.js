@@ -40,8 +40,7 @@
 		    activeIndex = index;
 
 			carousel = tabContentContainers[activeIndex].querySelectorAll('.slider');	    
-			initCarousel(carousel);
-		}
+			initCarousel(carousel);		}
 	};
 
     return {
