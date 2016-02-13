@@ -1,12 +1,24 @@
 .colour-pink {
   background-color: map-deep-get($colours, base, pink);
+
+  .active-colour-pink & {
+    border-color: map-deep-get($colours, grays, border-is-active); 
+  }
 }
 
 .colour-red {
   background-color: map-deep-get($colours, base, red);
+
+  .active-colour-red & {
+    border-color: map-deep-get($colours, grays, border-is-active); 
+  }
 }
 
 .colour-green {
   background-color: map-deep-get($colours, base, green);
+
+  .active-colour-green & {
+    border-color: map-deep-get($colours, grays, border-is-active); 
+  }
 }
 

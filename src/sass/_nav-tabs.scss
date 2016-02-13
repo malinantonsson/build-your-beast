@@ -109,10 +109,6 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
     @include span-columns(1.5 of 6);
     @include shift(0.5);
   }
-
-  &.is-active {
-    border-color: map-deep-get($colours, grays, border-is-active); 
-  }
 }
 
 

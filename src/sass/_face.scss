@@ -6,8 +6,19 @@
 
 .byb-face {
 	position: absolute;
-	fill: #ed6171;
 	top: 0;
+
+	.active-colour-pink & {
+		fill: $colour-pink;
+	}
+
+	.active-colour-green & {
+		fill: $colour-green;
+	}
+
+	.active-colour-red & {
+		fill: $colour-red;
+	}
 }
 
 @each $part in $face-parts {
