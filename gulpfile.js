@@ -86,7 +86,10 @@ gulp.task('svgSprite', function () {
 
 gulp.task('sprite', ['svgSprite']);
 
-
+gulp.task('data', function() {
+  return gulp.src(appPath + '/data/*.json')
+    .pipe(gulp.dest(distPath + '/data/'));
+});
 
 // Clean site directory
 gulp.task('clean', del.bind(null, ['dist'], {dot: true}));
