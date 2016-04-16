@@ -8,6 +8,7 @@ request.onload = function() {
     // Success!
     svgData = JSON.parse(this.response);
   } else {
+  	console.log(this.status);
   	//TODO: add error messages
   	console.log('returned error');
     // We reached our target server, but it returned an error
@@ -35,9 +36,12 @@ sliders.each(function(index, parent) {
 		//get id of clicked svg
 		var svgId = $(link).attr('id');
 		
-		$(link).on('click', function(){
+		$(link).on('click', function(evt){
+			evt.preventDefault(); //TODO use vanilla js
+
 			var index = svgId.replace(/.*?(?=[1-9]|$)/gi, '');
-			var svgAdd = svgData[slideId][index]
+
+			var svgAdd = svgData[slideId][index];
         	$('.byb-canvas-' + slideId).html(svgAdd);
 		});
 	});
