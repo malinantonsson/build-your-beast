@@ -41,9 +41,14 @@
 					<div id="<%= headPart %>" class="c-tab__content <%= headPart %> slider slider-<%= headPart %>">
 					<% _.each(headSvgs, function(item, id) {  %>
 						<div class="slide">
-							<a id="<%= headPart %>-<%= id %>" href="#" class="<%= headPart %>-<%= id %> tab-content-icon-link">
+							<!-- <a id="<%= headPart %>-<%= id %>" href="#" class="<%= headPart %>-<%= id %> tab-content-icon-link">
 								<%= item %>
-							</a>
+							</a> -->
+							<a id="<%= headPart %>-<%= id %>" href="#" class="<%= headPart %>-<%= id %> tab-content-icon-link">
+								<svg class="preview-item">
+			                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="data/elements.svg#<%= headPart %>_<%= id %>"></use>
+			                    </svg>
+			                </a>
 						</div>
 					<% }); %>
 					</div>

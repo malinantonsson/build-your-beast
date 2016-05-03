@@ -16,6 +16,7 @@ var argv         = require('yargs').argv;
 var lazypipe     = require('lazypipe');
 var fc2json = require('gulp-file-contents-to-json');
 var svgmin = require('gulp-svgmin');
+var svgSymbols = require('gulp-svg-symbols');
 
 var gutil = require('gulp-util');
 var plugins = require("gulp-load-plugins")({
@@ -58,6 +59,11 @@ var config = {
   minify: argv.minify || false
 };
 
+gulp.task('svg-symbols', function () {
+  return gulp.src(svgMinFolder +'**/*.svg')
+    .pipe(svgSymbols())
+    .pipe(gulp.dest(dataFolder));
+});
 
 
 gulp.task('svgSprite', function () {
@@ -87,7 +93,7 @@ gulp.task('svgSprite', function () {
 gulp.task('sprite', ['svgSprite']);
 
 gulp.task('data', function() {
-  return gulp.src(appPath + '/data/*.json')
+  return gulp.src(appPath + '/data/*')
     .pipe(gulp.dest(distPath + '/data/'));
 });
 
@@ -215,7 +221,7 @@ gulp.task('dev', ['default', 'setWatch'], function() {
 
   gulp.watch(['src/sass/**/*.scss'], ['styles', reload]);
   gulp.watch(['src/partials/*.html'], ['build:pages', reload]);
-  gulp.watch(['src/data/*.json'], ['build:pages', reload]);
+  gulp.watch(['src/data/*'], ['build:pages', reload]);
   gulp.watch(['src/img/**/*'], ['images', reload]);
   gulp.watch(['src/js/**/*.js'], ['scripts', reload]);
 });
