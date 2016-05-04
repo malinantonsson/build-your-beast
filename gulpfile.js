@@ -18,8 +18,9 @@ var fc2json = require('gulp-file-contents-to-json');
 var svgmin = require('gulp-svgmin');
 var svgSymbols = require('gulp-svg-symbols');
 
-var rsp = require('remove-svg-properties').stream;
+//var rsp = require('remove-svg-properties').stream;
 
+var rsp = require('remove-svg-properties');
 var gutil = require('gulp-util');
 var plugins = require("gulp-load-plugins")({
     pattern: ['gulp-*', 'gulp.*'],
@@ -67,9 +68,25 @@ gulp.task('svg-symbols', function () {
     .pipe(gulp.dest(dataFolder));
 });
 
+
+
+var svgOptions = {
+    src: svgFolder + '**/*.svg',
+    out: svgMinFolder + 'optimized/',
+    stylesheets: true
+}
+
+
+
+gulp.task('removeSvgProperties', function() {
+  rsp.remove(svgOptions);
+});
+
+
 gulp.task('remove-svg-properties', function () {
-    gulp.src(svgMinFolder +'**/*.svg')
+    gulp.src(svgMinFolder +'crown/10.svg')
     .pipe(rsp.remove({
+        properties: [rsp.PROPS_FILL],
         stylesToInline: true
     }))
     .pipe(gulp.dest(svgFolder + 'optimized/'));
