@@ -45,7 +45,7 @@ sassSpriteTmpl = partialsTemplateFolder + 'sprite-template.scss';
 var dataFolder = appPath + '/data';
 var navData = require( dataFolder + '/data.json');
 
-var svgFolder = appPath + '/svgs/';
+var svgFolder = appPath + '/svg-original/';
 var svgMinFolder = appPath + '/svg-min/';
 
 var config = {
@@ -70,27 +70,6 @@ gulp.task('svg-symbols', function () {
 
 
 
-var svgOptions = {
-    src: svgFolder + '**/*.svg',
-    out: svgMinFolder + 'optimized/',
-    stylesheets: true
-}
-
-
-
-gulp.task('removeSvgProperties', function() {
-  rsp.remove(svgOptions);
-});
-
-
-gulp.task('remove-svg-properties', function () {
-    gulp.src(svgMinFolder +'crown/10.svg')
-    .pipe(rsp.remove({
-        properties: [rsp.PROPS_FILL],
-        stylesToInline: true
-    }))
-    .pipe(gulp.dest(svgFolder + 'optimized/'));
-});
 
 
 gulp.task('svgSprite', function () {
@@ -129,7 +108,7 @@ gulp.task('clean', del.bind(null, ['dist'], {dot: true}));
 
 
 
-gulp.task('svgs-min', function () {
+gulp.task('minify-svgs', function () {
     return gulp.src(svgFolder + '**/*')
         .pipe(svgmin())
         .pipe(gulp.dest('./src/svg-min/'));
@@ -174,13 +153,23 @@ gulp.task('build:pages', ['build:nav'], function () {
 
 
 
-gulp.task('create-json-blob', function() {
-  gulp.src(svgMinFolder + '/**/*')
-      .pipe(fc2json('data.json', {
+gulp.task('create-json-beast', function() {
+  gulp.src(svgMinFolder + 'beast/**/*')
+      .pipe(fc2json('beast-data.json', {
         extname : false, // default is true
       }))
       .pipe(gulp.dest(dataFolder));
 });
+
+gulp.task('create-json-nav', function() {
+  gulp.src(svgMinFolder + 'nav/**/*')
+      .pipe(fc2json('nav-data.json', {
+        extname : false, // default is true
+      }))
+      .pipe(gulp.dest(dataFolder));
+});
+
+
 
 gulp.task('libs', function() {
   return gulp.src(['src/js/libs/*.js'])
