@@ -18,6 +18,8 @@ var fc2json = require('gulp-file-contents-to-json');
 var svgmin = require('gulp-svgmin');
 var svgSymbols = require('gulp-svg-symbols');
 
+var rsp = require('remove-svg-properties').stream;
+
 var gutil = require('gulp-util');
 var plugins = require("gulp-load-plugins")({
     pattern: ['gulp-*', 'gulp.*'],
@@ -63,6 +65,14 @@ gulp.task('svg-symbols', function () {
   return gulp.src(svgMinFolder +'**/*.svg')
     .pipe(svgSymbols())
     .pipe(gulp.dest(dataFolder));
+});
+
+gulp.task('remove-svg-properties', function () {
+    gulp.src(svgMinFolder +'**/*.svg')
+    .pipe(rsp.remove({
+        stylesToInline: true
+    }))
+    .pipe(gulp.dest(svgFolder + 'optimized/'));
 });
 
 
