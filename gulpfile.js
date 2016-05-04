@@ -43,7 +43,7 @@ sassSpriteTmpl = partialsTemplateFolder + 'sprite-template.scss';
 
 
 var dataFolder = appPath + '/data';
-var navData = require( dataFolder + '/data.json');
+var navData = require( dataFolder + '/nav-data.json');
 
 var svgFolder = appPath + '/svg-original/';
 var svgMinFolder = appPath + '/svg-min/';
@@ -152,7 +152,9 @@ gulp.task('build:pages', ['build:nav'], function () {
 });
 
 
-
+/*
+  Builds beast data from minified svgs
+ */
 gulp.task('create-json-beast', function() {
   gulp.src(svgMinFolder + 'beast/**/*')
       .pipe(fc2json('beast-data.json', {
@@ -161,6 +163,9 @@ gulp.task('create-json-beast', function() {
       .pipe(gulp.dest(dataFolder));
 });
 
+/*
+  Builds nav data from minified svgs
+ */
 gulp.task('create-json-nav', function() {
   gulp.src(svgMinFolder + 'nav/**/*')
       .pipe(fc2json('nav-data.json', {
