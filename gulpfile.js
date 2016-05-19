@@ -255,6 +255,7 @@ gulp.task('default', ['clean'], function (cb) {
       'build:pages',
       'styles',
       'scripts',
-      'images'
+      'images',
+      'data'
     ], cb);
 });

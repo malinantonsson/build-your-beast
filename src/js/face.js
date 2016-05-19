@@ -1,7 +1,7 @@
 var svgData;
 
 var request = new XMLHttpRequest();
-request.open('GET', '/data/data.json', true);
+request.open('GET', '/data/beast-data.json', true);
 
 request.onload = function() {
   if (this.status >= 200 && this.status < 400) {
