@@ -7,12 +7,16 @@ var body = document.getElementsByTagName('body');
 var hideClass = 'is-hidden';
 var overlayOpenClass = 'overlay-open';
 
-aboutBtn.addEventListener('click', function() {
-	aboutOverlay.classList.remove(hideClass);
-	body[0].classList.add(overlayOpenClass);
-});
+if(aboutBtn) {
+	aboutBtn.addEventListener('click', function() {
+		aboutOverlay.classList.remove(hideClass);
+		body[0].classList.add(overlayOpenClass);
+	});
+}
 
-closeBtn.addEventListener('click', function() {
-	aboutOverlay.classList.add(hideClass);
-	body[0].classList.remove(overlayOpenClass);
-});
+if (closeBtn) {
+	closeBtn.addEventListener('click', function() {
+		aboutOverlay.classList.add(hideClass);
+		body[0].classList.remove(overlayOpenClass);
+	});
+}

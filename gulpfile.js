@@ -167,6 +167,14 @@ gulp.task('build:pages', ['build:nav', 'build:about'], function () {
         }));
 });
 
+gulp.task('pages', function () {
+    return  gulp.src( appPath + '/*.html' )
+        .pipe(gulp.dest( distPath ))
+        .pipe(browserSync.reload({
+          stream: true
+        }));
+});
+
 
 /*
   Builds beast data from minified svgs
@@ -258,6 +266,7 @@ gulp.task('dev', ['default', 'setWatch'], function() {
 
   gulp.watch(['src/sass/**/*.scss'], ['styles', reload]);
   gulp.watch(['src/partials/*.html'], ['build:pages', reload]);
+  gulp.watch(['src/*.html'], ['pages', reload]);
   gulp.watch(['src/data/*'], ['build:pages', reload]);
   gulp.watch(['src/img/**/*'], ['images', reload]);
   gulp.watch(['src/js/**/*.js'], ['scripts', reload]);
@@ -270,6 +279,7 @@ gulp.task('default', ['clean'], function (cb) {
       'build:nav',
       'build:about',
       'build:pages',
+      'pages',
       'styles',
       'scripts',
       'images',

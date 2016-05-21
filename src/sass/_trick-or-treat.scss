@@ -1,0 +1,9 @@
+#trick-or-treat {
+	.byb-button {
+		@extend %byb-button;
+	}
+
+	.trick-or-treat__wrapper {
+	    max-width: 568px;
+	}
+}
