@@ -40,8 +40,17 @@
 		    tabContentContainers[index].classList.add('is-active');
 		    activeIndex = index;
 
-			carousel = tabContentContainers[activeIndex].querySelectorAll('.slider');	    
-			initCarousel(carousel);		
+		    console.log(index);
+
+			carousel = tabContentContainers[activeIndex].querySelectorAll('.slider');
+			if( carousel.length > 0 ) {
+				console.log(carousel);
+				initCarousel(carousel);		   
+			}
+
+			if( index === 5) {
+				initShare();
+			}
 		}
 	};
 
