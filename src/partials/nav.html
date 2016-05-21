@@ -12,7 +12,7 @@
 			<% }); %>
 		</div>
 
-		<div class="tab-content">
+		<div class="tab-content" id="tabs-colour">
 			<!-- Tab contents 
 				 Colour is first active tab -->
 			<div class="c-tab is-active">
@@ -34,7 +34,7 @@
 
 			<!-- Loop through svgs -->
 			<% _.each(data, function(headSvgs, headPart) {  %>
-				<div class="c-tab">
+				<div class="c-tab" id="tabs-<%= headPart %>">
 
 					<div id="<%= headPart %>" class="c-tab__content <%= headPart %> slider slider-<%= headPart %>">
 					<% _.each(headSvgs, function(item, id) {  %>
@@ -49,7 +49,7 @@
 			<% }); %>
 
 			<!-- Share tab -->
-			<div class="c-tab">
+			<div class="c-tab" id="tabs-share">
 			    <div class="c-tab__content"> 
 			    	<p class="byb-share-copy">Share your beast on a friend’s timeline or print to create a mask</p>
 			    	

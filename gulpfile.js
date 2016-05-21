@@ -33,10 +33,14 @@ var appPath = './src';
 var distPath = 'dist';
 //var indexTmpl = appPath + '/index.html';
 var partialsFolder =  './src/partials/';
+
+/* templates for nav and about */
 var navTempl = partialsFolder + 'nav.html';
+var aboutTempl = partialsFolder + 'about.html';
+
 var pageBuildSrc = partialsFolder + 'index.html';
 var partialsTemplateFolder = partialsFolder + '_master/templates/';
-var generatedNav = partialsFolder + '_master/globals/';
+var generatedPartials = partialsFolder + '_master/globals/';
 
 sassPath = appPath + '/sass/';
 sassSpriteTmpl = partialsTemplateFolder + 'sprite-template.scss';
@@ -44,6 +48,7 @@ sassSpriteTmpl = partialsTemplateFolder + 'sprite-template.scss';
 
 var dataFolder = appPath + '/data';
 var navData = require( dataFolder + '/nav-data.json');
+var aboutData = require( dataFolder + '/about-data.json');
 
 var svgFolder = appPath + '/svg-original/';
 var svgMinFolder = appPath + '/svg-min/';
@@ -129,10 +134,21 @@ gulp.task('styles', function() {
 });
 
 //https://www.npmjs.com/package/gulp-template
+gulp.task('build:about', function () {
+  return gulp.src(aboutTempl)
+    .pipe(template( {data: aboutData}))
+    .pipe(gulp.dest(generatedPartials))
+    // Reloading the stream
+    .pipe(browserSync.reload({
+      stream: true
+    }));
+});
+
+//https://www.npmjs.com/package/gulp-template
 gulp.task('build:nav', function () {
   return gulp.src(navTempl)
     .pipe(template( {data: navData}))
-    .pipe(gulp.dest(generatedNav))
+    .pipe(gulp.dest(generatedPartials))
     // Reloading the stream
     .pipe(browserSync.reload({
       stream: true
@@ -142,7 +158,7 @@ gulp.task('build:nav', function () {
 /* 
 Builds out and compiles all the template pages  
 */
-gulp.task('build:pages', ['build:nav'], function () {
+gulp.task('build:pages', ['build:nav', 'build:about'], function () {
     return  gulp.src( pageBuildSrc )
         .pipe(extender({annotations:false,verbose:false}))
         .pipe(gulp.dest( distPath ))
@@ -252,6 +268,7 @@ gulp.task('default', ['clean'], function (cb) {
 
   runSequence([
       'build:nav',
+      'build:about',
       'build:pages',
       'styles',
       'scripts',
