@@ -219,12 +219,23 @@ var scriptsFinish = lazypipe()
 
 // Lint and build scripts
 gulp.task('scripts', ['libs'], function() {
-  return gulp.src(['src/js/*.js'])
+  return gulp.src(['src/js/create-beast/*.js'])
     .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
     .pipe($.if(config.isWatching, $.jshint()))
     .pipe($.if(config.isWatching, $.jshint.reporter('jshint-stylish')))
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
     .pipe($.concat('scripts.js'))
+    .pipe(scriptsFinish());
+});
+
+// Lint and build scripts
+gulp.task('trickortreat-scripts', function() {
+  return gulp.src(['src/js/*.js'])
+    .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
+    .pipe($.if(config.isWatching, $.jshint()))
+    .pipe($.if(config.isWatching, $.jshint.reporter('jshint-stylish')))
+    .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
+    .pipe($.concat('trickortreat.js'))
     .pipe(scriptsFinish());
 });
 
@@ -269,7 +280,7 @@ gulp.task('dev', ['default', 'setWatch'], function() {
   gulp.watch(['src/*.html'], ['pages', reload]);
   gulp.watch(['src/data/*'], ['build:pages', reload]);
   gulp.watch(['src/img/**/*'], ['images', reload]);
-  gulp.watch(['src/js/**/*.js'], ['scripts', reload]);
+  gulp.watch(['src/js/**/*.js'], ['trickortreat-scripts', 'scripts', reload]);
 });
 
 // Build production files, the default task
@@ -282,6 +293,7 @@ gulp.task('default', ['clean'], function (cb) {
       'pages',
       'styles',
       'scripts',
+      'trickortreat-scripts',
       'images',
       'data'
     ], cb);
