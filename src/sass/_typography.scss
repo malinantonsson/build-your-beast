@@ -9,7 +9,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: sans-serif;
+	font-family: "Oswald", sans-serif;
 	margin: 0;
 	text-rendering: optimizeLegibility; // Fix the character spacing for headings
 }
@@ -28,11 +28,26 @@ h3, .heading-3 {
 
 p, .paragraph {
 	@extend %paragraph;
-	.inverse & {
-		color: white;
-	}
 }
 
 a {
 	text-decoration: none;
+	color: #ffffff;
+	text-transform: uppercase;
 }
+
+.about-copy {
+	text-transform: none;
+	margin: 7%;
+
+	a {
+		color: $about-card-gray;
+		text-transform: none;		
+	}
+}
+
+.about-card__role {
+	@extend %role;
+	color: $about-card-gray;	
+}
+

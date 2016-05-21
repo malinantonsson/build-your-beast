@@ -1,0 +1,12 @@
+%byb-button {
+	background: transparent;
+	border: none;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}

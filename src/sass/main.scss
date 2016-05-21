@@ -19,6 +19,7 @@ $svgSprite: '../images/sprite.svg';
 
 @import 'variables';
 @import 'typography';
+@import 'button';
 @import 'sprite';
 @import 'icons';
 @import 'placeholders';
@@ -27,6 +28,7 @@ $svgSprite: '../images/sprite.svg';
 @import 'nav-tabs';
 @import 'generic';
 @import 'share';
+@import 'about';
 
 
 .tab-content .slide svg {
