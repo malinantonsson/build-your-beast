@@ -12,6 +12,7 @@ var face = {
 var initShare = function() {
 	//TODO: add validation to check all items have been selected
 	var url = createUrl();
+    console.log(url);
 };
 
 if ( twitterButton ) {
@@ -40,5 +41,6 @@ if ( facebookButton ) {
 
 var createUrl = function() {
     var url = 'http://www.buildyourbeast.co.uk?/trickortreat/h=' + face.colour + '&c=' + face.crown + '&e=' + face.eyes + '&n=' + face.nose + '&m=' + face.mouth;
+    console.log(url);
     return encodeURIComponent(url);
 };
