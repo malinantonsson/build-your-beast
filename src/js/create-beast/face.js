@@ -40,7 +40,7 @@ sliders.each(function(index, parent) {
 			evt.preventDefault(); //TODO use vanilla js
 
 			var index = svgId.replace(/.*?(?=[1-9]|$)/gi, '');
-			face[slideId] = index;
+			beast[slideId].id = index;
 
 			var svgAdd = svgData[slideId][index];
         	$('.byb-canvas-' + slideId).html(svgAdd);
