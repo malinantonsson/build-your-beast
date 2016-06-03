@@ -169,7 +169,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   &:after,
   &:before {
     background-color:  map-deep-get($colours, base, gray);
-    z-index: 10;
+    z-index: map-get($z-index, tabs-pagination-bg);
     position: absolute; 
     top: 0;
     width: 2em;
@@ -193,7 +193,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 .bx-next {
   position: absolute;
   @include vertical-align(absolute);
-  z-index: 11;
+  z-index: map-get($z-index, tabs-pagination);
   fill: map-deep-get($colours, base, pink);
 
   .active-colour-green & {

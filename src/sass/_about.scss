@@ -22,6 +22,7 @@ body.overlay-open {
 	background-color: #000;
 	color: #ffffff;
 	overflow-y: scroll;
+	z-index: map-get($z-index, about);
 
 	&.is-hidden {
 		display: none;

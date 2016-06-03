@@ -35,6 +35,12 @@ $colour-selection-border: #565656;
 $about-card-background: #191919;
 $about-card-gray : #757575;
 
+$z-index: (
+	about: 10,
+	tabs-pagination: 2,
+	tabs-pagination-bg: 1
+);
+
 $face-parts: ('crown', 'eyes', 'nose', 'mouth');
 
 $background-min-size: (
