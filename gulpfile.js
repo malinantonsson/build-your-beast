@@ -219,7 +219,7 @@ var scriptsFinish = lazypipe()
 
 // Lint and build scripts
 gulp.task('scripts', ['libs'], function() {
-  return gulp.src(['src/js/create-beast/*.js'])
+  return gulp.src(['src/js/shared/*.js', 'src/js/create-beast/*.js'])
     .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
     .pipe($.if(config.isWatching, $.jshint()))
     .pipe($.if(config.isWatching, $.jshint.reporter('jshint-stylish')))
@@ -230,7 +230,7 @@ gulp.task('scripts', ['libs'], function() {
 
 // Lint and build scripts
 gulp.task('trickortreat-scripts', function() {
-  return gulp.src(['src/js/*.js'])
+  return gulp.src(['src/js/shared/*.js', 'src/js/*.js'])
     .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
     .pipe($.if(config.isWatching, $.jshint()))
     .pipe($.if(config.isWatching, $.jshint.reporter('jshint-stylish')))
