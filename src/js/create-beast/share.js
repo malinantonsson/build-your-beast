@@ -34,34 +34,19 @@ var beast = {
     }
 }
 
-var face = {
-	'colour': 'pink', //pink is default
-	'crown': '1',
-	'eyes': '1',
-	'nose': '1',
-	'mouth': '1'
-};
-
 var initShare = function() {
 	//TODO: add validation to check all items have been selected
 	var url = createUrl();
     addSelectedItems();
-    //console.log(url);
 };
 
 var addItem = function(shape, index) {
-    console.log('index: ' + index);
     var img = new Image();
     var svg = new Blob([shape.data], {type: 'image/svg+xml'});
     var url = DOMURL.createObjectURL(svg);
     img.onload = function () {
       beastCanvas.drawImage(img, shape.x, shape.y);
       DOMURL.revokeObjectURL(url);
-      console.log('setting img');
-
-      if(index == 4) {
-        getImgData();
-      }
     };
 
     img.src = url;
@@ -83,21 +68,17 @@ var addBeastColour = function(colour) {
 }
 
 var downloadImageLink = function(imgData) {
-    var imgData = imgData.replace("image/png", "image/octet-stream");
-    downloadButton.href = imgData;
+    return imgData.replace("image/png", "image/octet-stream");
 }
 
 var getImgData = function() {
     var rawImageData = canvas.toDataURL();
-    downloadImageLink(rawImageData);
-    console.log('getting data');
+    return downloadImageLink(rawImageData);
 }
 
 var addSelectedItems = function() {
-    var i = 0;
 
     for (var shape in beast) {
-        console.log(shape);
         var item;
         var value = beast[shape].id;
         
@@ -109,7 +90,6 @@ var addSelectedItems = function() {
         
         var shape = { data: item, x: beast[shape].x, y:beast[shape].y };
         addItem(shape, i); 
-        i++;
     }
 
         
@@ -133,8 +113,8 @@ var createCanvas = function() {
 
 var initDownload = function() {
     downloadButton.addEventListener('click', function(e) {
-        //e.preventDefault();
-
+        var href = getImgData();
+        downloadButton.href = href;
         return false;
     });
 
@@ -154,10 +134,9 @@ if ( twitterButton ) {
         e.preventDefault();
          //TWITTER 
         var text = 'Trick or Treat';
-        var twitterurl = 'https://twitter.com/intent/tweet?text='+text+'&hashtags=buildyourbeast'+'&url=';
-        var url = createUrl();
+        var twitterurl = 'https://twitter.com/intent/tweet?text='+text+'&hashtags=buildyourbeast'+'&url=' + createUrl();
 
-        window.open(twitterurl + url, 'twWindow', 'status = 1, height = 380, width = 500, resizable = 0' );
+        window.open(twitterurl + 'twWindow', 'status = 1, height = 380, width = 500, resizable = 0' );
         return false;
     });
 }
@@ -174,6 +153,6 @@ if ( facebookButton ) {
 }
 
 var createUrl = function() {
-    var url = 'http://www.buildyourbeast.co.uk/trickortreat/?h=' + face.colour + '&c=' + face.crown + '&e=' + face.eyes + '&n=' + face.nose + '&m=' + face.mouth;
+    var url = 'http://www.buildyourbeast.co.uk/trickortreat/?h=' + beast.colour.id + '&c=' + beast.crown.id + '&e=' + beast.eyes.id + '&n=' + beast.nose.id + '&m=' + beast.mouth.id;
     return encodeURIComponent(url);
 };
