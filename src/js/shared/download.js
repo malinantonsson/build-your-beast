@@ -1,5 +1,4 @@
 var downloadButton = document.getElementById('print');
-console.log('download.js');
 
 var canvasWrapper = document.getElementsByClassName('byb-canvas')[0];
 var canvas, beastCanvas;
