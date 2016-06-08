@@ -16,7 +16,6 @@ $svgSprite: '../images/sprite.svg';
 @import 'mixins/icon-sprites';
 @import 'mixins/vertical-align';
 
-
 @import 'variables';
 @import 'typography';
 @import 'button';
@@ -30,13 +29,12 @@ $svgSprite: '../images/sprite.svg';
 @import 'share';
 @import 'about';
 @import 'trick-or-treat';
-
+@import 'error';
 
 .tab-content .slide svg {
 	width: 170px;
 	display: block;
 }
-
 
 .slide {
 	width: 192px!important;

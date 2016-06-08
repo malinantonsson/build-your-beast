@@ -40,7 +40,7 @@ var beast = {
 		short: 'm',
 		el: 'byb-canvas-mouth'
     }
-}
+};
 
 var addItem = function(shape, index) {
     var img = new Image();
@@ -52,7 +52,7 @@ var addItem = function(shape, index) {
     };
 
     img.src = url;
-}
+};
 
 var addBeastColour = function(colour) {
     switch(colour) {
@@ -67,30 +67,30 @@ var addBeastColour = function(colour) {
             break;
     }
     return '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="608" x="0px" y="0px" viewBox="0 0 479.5 608" enable-background="new 0 0 479.5 608" xml:space="preserve"><g id="background"><rect x="-270" y="-51" display="inline" width="100%" height="100%"/></g><g id="face_colour_1"><path fill="' + hex + '" d="M393,456.4c0,84.3-68.3,152.6-152.6,152.6h-0.7C155.3,609,87,540.7,87,456.4V232.6C87,148.3,155.3,80,239.6,80h0.7C324.7,80,393,148.3,393,232.6V456.4z"/></g></svg>';
-}
+};
 
 var downloadImageLink = function(imgData) {
     return imgData.replace("image/png", "image/octet-stream");
-}
+};
 
 var getImgData = function() {
     var rawImageData = canvas.toDataURL();
     return downloadImageLink(rawImageData);
-}
+};
 
 var addSelectedItems = function() {
 
-    for (var shape in beast) {
+    for (var part in beast) {
         var item;
-        var value = beast[shape].id;
+        var value = beast[part].id;
         
-        if(shape === 'colour') {
+        if(part === 'colour') {
             item = addBeastColour(beast.colour.id);
         } else {
-            item = svgData[shape][value];
+            item = svgData[part][value];
         }
         
-        var shape = { data: item, x: beast[shape].x, y:beast[shape].y };
+        var shape = { data: item, x: beast[part].x, y:beast[part].y };
         addItem(shape); 
     }
 };
