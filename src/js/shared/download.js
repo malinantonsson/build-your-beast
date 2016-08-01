@@ -91,6 +91,7 @@ var addSelectedItems = function() {
         }
         
         var shape = { data: item, x: beast[part].x, y:beast[part].y };
+        console.log(shape);
         addItem(shape); 
     }
 };
@@ -110,6 +111,14 @@ var createCanvas = function() {
     beastCanvas.fill();
 
     canvasWrapper.appendChild(canvas);
+};
+
+var clearCanvas = function() {
+    console.log('clear');
+    beastCanvas.clearRect(0, 0, canvas.width, canvas.height);
+    beastCanvas.fillStyle = "#000";
+    beastCanvas.fillRect(0,0,canvas.width, canvas.height);
+    beastCanvas.fill();
 };
 
 var initDownload = function() {

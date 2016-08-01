@@ -50,6 +50,8 @@
 
 			if( index === 5) {
 				initShare();
+			} else {
+				clearCanvas();
 			}
 		}
 	};
