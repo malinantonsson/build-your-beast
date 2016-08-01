@@ -5,16 +5,6 @@ html {
   box-sizing: inherit;
 }
 
-body {
-	margin: 0;
-	//padding: 0 $gutter/2;
-	background: url('../images/background-small.jpg') #000000 top center / cover no-repeat;
-
-	@include mq(from, large) {
-		background-image: url('../images/background-large.jpg');
-	}
-}
-
 .byb-logo {
 	margin: 1em;
 }

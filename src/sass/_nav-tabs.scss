@@ -60,7 +60,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   height: 100%!important;
 }
 
-.c-tab__content-colour {
+.c-tab__content--colour {
   padding-top: 1em;
   padding-bottom: 1em;
   overflow: auto;
@@ -94,8 +94,8 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 .tab-content {
   width: 100%;
   overflow: auto;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  /* padding-top: 1em;
+  padding-bottom: 1em; */
 }
 
 .tab-content-colour {
@@ -161,7 +161,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 }
 
 .bx-viewport {
-  height: 160px!important;
+  height: 135px!important;
   padding-right: 2em;
   padding-left: 2em;
   position: relative;
@@ -216,4 +216,10 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 .tab-content-icon-link {
   display: block;
   height: 100%;
+}
+
+.c-tab__content--share {
+  overflow: auto;
+  padding-bottom: 1em;
+  padding-top: 1em;
 }

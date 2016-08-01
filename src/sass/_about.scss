@@ -4,6 +4,7 @@ body.overlay-open {
 
 .byb-about-btn {
 	@extend %byb-button;
+	position: absolute;
 }
 
 .byb-close-btn {
