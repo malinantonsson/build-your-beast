@@ -84,6 +84,10 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 .nav-tabs {
   margin-top: 3em;
   background-color: map-deep-get($colours, base, gray);
+
+  @include mq(from, medium) {
+    min-height: 200px;
+  }
 }
 
 .tabs-nav {

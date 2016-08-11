@@ -91,7 +91,7 @@ var addSelectedItems = function() {
         }
         
         var shape = { data: item, x: beast[part].x, y:beast[part].y };
-        console.log(shape);
+
         addItem(shape); 
     }
 };
@@ -114,7 +114,8 @@ var createCanvas = function() {
 };
 
 var clearCanvas = function() {
-    console.log('clear');
+    if(!beastCanvas) return;
+
     beastCanvas.clearRect(0, 0, canvas.width, canvas.height);
     beastCanvas.fillStyle = "#000";
     beastCanvas.fillRect(0,0,canvas.width, canvas.height);

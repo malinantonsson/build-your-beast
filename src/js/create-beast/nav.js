@@ -7,7 +7,7 @@
     var el = document.querySelector(options.el);
     var tabNavigationLinks = el.querySelectorAll(options.tabNavigationLinks);
     var tabContentContainers = el.querySelectorAll(options.tabContentContainers);
-    console.log(tabContentContainers);
+
     var activeIndex = 0;
     var initCalled = false;
     var carousel;
@@ -40,11 +40,9 @@
 		    tabContentContainers[index].classList.add('is-active');
 		    activeIndex = index;
 
-		    console.log(index);
-
 			carousel = tabContentContainers[activeIndex].querySelectorAll('.slider');
+			
 			if( carousel.length > 0 ) {
-				console.log(carousel);
 				initCarousel(carousel);		   
 			}
 
