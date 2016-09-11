@@ -88,6 +88,7 @@ var addSelectedItems = function() {
             item = addBeastColour(beast.colour.id);
         } else {
             item = svgData[part][value];
+            console.log(item);
         }
         
         var shape = { data: item, x: beast[part].x, y:beast[part].y };
