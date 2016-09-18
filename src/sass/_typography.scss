@@ -51,3 +51,7 @@ a {
 	color: $about-card-gray;	
 }
 
+.byb-share-copy {
+	@extend %share-copy;
+	margin-bottom: .5em;
+}

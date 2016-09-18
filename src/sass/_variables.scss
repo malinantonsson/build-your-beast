@@ -118,6 +118,13 @@ $type-formatting: (
 		medium: 20px,
 		large: 20px,
 		xlarge: 16px,
+	),
+	share-copy: (
+		null: (13px, null, 400, null, .02em, null),
+		small: 13px,
+		medium: 16px,
+		large: 16px,
+		xlarge: 16px,
 	)
 );
 
@@ -126,4 +133,5 @@ $type-formatting-h1: map-get($type-formatting, 'h1');
 $type-formatting-h2: map-get($type-formatting, 'h2');
 $type-formatting-h3: map-get($type-formatting, 'h3');
 $type-formatting-p: map-get($type-formatting, 'p');
+$type-formatting-share: map-get($type-formatting, 'share-copy');
 $type-formatting-role: map-get($type-formatting, 'role');
