@@ -1,6 +1,7 @@
 var colours = $('body').find('.tab-content-colour');
 
 colours.each(function(index, colour) {
+	deactivateTabs.activate();	
 
 	var colourId = $(colour).attr('id');
 	$(colour).on('click', function(){

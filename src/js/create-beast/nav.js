@@ -32,13 +32,20 @@
 	};
 
     var goToTab = function(index) {
-    	//console.log(index);
+    	//return if the link has not been activated yet
+    	if (tabNavigationLinks[index].classList.contains('is-deactivated')) {
+		    return;
+		} 
+
 		if (index !== activeIndex && index >= 0 && index <= tabNavigationLinks.length) {
 		    tabNavigationLinks[activeIndex].classList.remove('is-active');
 		    tabNavigationLinks[index].classList.add('is-active');
 		    tabContentContainers[activeIndex].classList.remove('is-active');
 		    tabContentContainers[index].classList.add('is-active');
 		    activeIndex = index;
+			
+			deactivateTabs.setCurrentSlide(index);
+
 
 			carousel = tabContentContainers[activeIndex].querySelectorAll('.slider');
 			

@@ -30,6 +30,11 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   }
 }
 
+.is-deactivated {
+ background-color: $about-card-background;
+ cursor: default;
+}
+
 
 .c-tabs-nav__link:hover {
   color: #6d6d6d;

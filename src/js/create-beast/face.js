@@ -31,6 +31,8 @@ sliders.each(function(index, parent) {
 	var slideId = $(parent).attr('id');
 	var links = $(parent).find('.tab-content-icon-link');
 
+	var nextSlide = $(this).closest('c-tabs-nav__link');
+
 	//loop through the links, get the ids and assign event-listners
 	links.each(function(i, link) {
 		//get id of clicked svg
@@ -38,6 +40,7 @@ sliders.each(function(index, parent) {
 		
 		$(link).on('click', function(evt){
 			evt.preventDefault(); //TODO use vanilla js
+			deactivateTabs.activate();
 
 			var index = svgId.replace(/.*?(?=[1-9]|$)/gi, '');
 			beast[slideId].id = index;
