@@ -23,6 +23,18 @@
 	color: #ffffff;
 	background-color: map-deep-get($colours, base, pink);
 	font-size: 14px;
+
+	 .active-colour-pink & {
+	    background-color: map-deep-get($colours, base, pink); 
+	  }
+
+	  .active-colour-green & {
+	    background-color: map-deep-get($colours, base, green); 
+	  }
+
+	  .active-colour-red & {
+	    background-color: map-deep-get($colours, base, red); 
+	  }
 }
 
 .byb-share-copy {

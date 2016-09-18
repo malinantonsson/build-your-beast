@@ -38,6 +38,18 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 .c-tabs-nav__link.is-active {
   background-color: map-deep-get($colours, base, gray);
   color: #ffffff;
+
+  .active-colour-pink & {
+    color: map-deep-get($colours, base, pink); 
+  }
+
+  .active-colour-green & {
+    color: map-deep-get($colours, base, green); 
+  }
+
+  .active-colour-red & {
+    color: map-deep-get($colours, base, red); 
+  }
 }
 
 
@@ -152,6 +164,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 
     span {
       display: inline-block;
+      font-size: 13px;
     }
   }
 }
