@@ -6,8 +6,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 }
 
 .c-tabs-nav__link {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: .3em 0;
   text-align: center;
   transition: color 0.3s;
   flex: 1 1 auto;
@@ -82,11 +81,17 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 
 
 .nav-tabs {
-  margin-top: 3em;
+  margin-top: 2em;
   background-color: map-deep-get($colours, base, gray);
 
   @include mq(from, medium) {
-    min-height: 200px;
+    //min-height: 200px;
+      position: absolute;
+      width: 100%;
+      margin: 2em auto 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
   }
 }
 
@@ -106,12 +111,12 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   cursor: pointer;
   border: .3em solid map-deep-get($colours, grays, colour-border);
 
-  @include span-columns(3 of 10);
-  @include shift(.33);
+  @include span-columns(2 of 10);
+  @include shift(1.33);
 
   @include mq(from, medium) {
-    @include span-columns(1.5 of 6);
-    @include shift(0.5);
+    @include span-columns(1 of 6);
+    @include shift(1);
   }
 }
 
@@ -164,8 +169,12 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   transform: rotate(180deg);
 }
 
+.is-fixed-heigh {
+  height: 90px;
+}
+
 .bx-viewport {
-  height: 135px!important;
+  height: 90px!important;
   padding-right: 2em;
   padding-left: 2em;
   position: relative;

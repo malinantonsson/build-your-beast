@@ -1,7 +1,16 @@
 .byb-beast {
-	max-width: 600px;
+	max-width: 360px;
 	margin: auto;
 	position: relative;
+
+	@media (min-height: 701px) {
+		max-width: 500px;
+	}
+
+
+	@media (min-height: 901px) {
+		max-width: 600px;
+	}
 }
 
 .byb-face {
