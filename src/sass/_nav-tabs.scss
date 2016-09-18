@@ -31,7 +31,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 }
 
 .is-deactivated {
- background-color: $about-card-background;
+ background-color: $about-card-background!important;
  cursor: default;
 }
 
