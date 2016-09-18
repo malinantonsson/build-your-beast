@@ -2,12 +2,19 @@
 	max-width: 600px;
 	margin: auto;
 	position: relative;
+	width: 100%;
+    height: 100%;
 }
 
 .byb-face {
 	position: absolute;
 	top: 0;
 	max-width: 100%;
+	height: 100%;
+	right: 0;
+    left: 0;
+    margin: auto;
+    z-index: -1;
 
 	.active-colour-pink & {
 		fill: $colour-pink;
@@ -30,11 +37,21 @@
 
 	.byb-canvas-#{$part} {
 		margin: auto;
+		//height: 25%;
+		height: map-deep-get($parts, #{$part}, height);
+
+	    svg {
+	    	height: 100%;
+	        margin: auto;
+			display: block;
+			width: 100%;
+
+	    }
 		
-		@include fluid-image-container(
+		/* @include fluid-image-container(
             map-deep-get($parts, #{$part}, width),
             map-deep-get($parts, #{$part}, height)
-        );
+        ); */
 		
 	}
 }

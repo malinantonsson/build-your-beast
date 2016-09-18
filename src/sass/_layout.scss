@@ -12,6 +12,10 @@ html {
 .byb-outside-wrapper {
 	width: 100%;
 	position: absolute;
+	display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    height: 100%;
 }
 
 .byb-background-image {
@@ -44,4 +48,13 @@ html {
 
 .byb-canvas {
 	display: none;
+}
+
+.beast__wrapper {
+	display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 70%;
+    height: 70%;
+    width: 100%;
 }
