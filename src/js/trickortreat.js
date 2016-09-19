@@ -7,6 +7,29 @@ var svgData;
 	var errorClass = 'has-error';
 	var errors = false;
 
+	var outerWrapper = document.querySelector('.byb-outside-wrapper');
+	var introWrapper = document.querySelector('.intro-lightning');
+	var introClass = 'is-intro';
+	var hideIntroClass = 'intro-end';
+	var removeIntroClass = 'intro-hidden';
+	var introIsFinished = false;
+
+	setTimeout(function() {
+		if(!introIsFinished) {
+			introIsFinished = true;
+		} 
+	}, 4500);
+
+	var finishIntro = function() {
+		introWrapper.classList.add(hideIntroClass);
+		setTimeout(function() {
+			outerWrapper.classList.remove(introClass);
+			introWrapper.classList.add(removeIntroClass);
+		}, 1000);
+	};
+
+
+
 	var getParameterByName = function(name) {
 	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 
@@ -35,6 +58,17 @@ var svgData;
 		request.onload = function() {
 		  if (this.status >= 200 && this.status < 400) {
 		    svgData = JSON.parse(this.response);
+		    if(introIsFinished) {
+			    finishIntro();
+			} else {
+				var checkIntro = setInterval(function() {
+					if(introIsFinished) {
+						clearInterval(checkIntro);
+						finishIntro();
+					}
+				}, 500);
+			}
+
 		  	//get and store ids from url
 			for (var item in beast) {
 				var sectionData = beast[item];
