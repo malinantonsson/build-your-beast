@@ -4,18 +4,20 @@ var outerWrapper = document.querySelector('.byb-outside-wrapper');
 var introWrapper = document.querySelector('.intro-lightning');
 var introClass = 'is-intro';
 var hideIntroClass = 'intro-end';
+var removeIntroClass = 'intro-hidden';
 var introIsFinished = false;
 
 setTimeout(function() {
 	if(!introIsFinished) {
 		introIsFinished = true;
 	} 
-}, 3000);
+}, 4500);
 
 var finishIntro = function() {
 	introWrapper.classList.add(hideIntroClass);
 	setTimeout(function() {
 		outerWrapper.classList.remove(introClass);
+		introWrapper.classList.add(removeIntroClass);
 	}, 1000);
 };
 
