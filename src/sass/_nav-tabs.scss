@@ -252,7 +252,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 }
 
 .c-tab__content--share {
-  overflow: auto;
+  overflow: hidden;
   padding-bottom: 1em;
   padding-top: 1em;
 }
