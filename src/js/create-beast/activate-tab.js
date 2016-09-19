@@ -19,7 +19,6 @@ var deactivateTabs = {
 		    nextSlide.classList.remove(this.settings.deactiveClass);
 		} 
 	}
-}
+};
 
 deactivateTabs.init();
-
