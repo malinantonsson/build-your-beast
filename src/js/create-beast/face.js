@@ -1,5 +1,8 @@
 var svgData;
 
+var outerWrapper = document.querySelector('.byb-outside-wrapper');
+var introClass = 'is-intro';
+
 var request = new XMLHttpRequest();
 request.open('GET', '/data/beast-data.json', true);
 
@@ -7,6 +10,7 @@ request.onload = function() {
   if (this.status >= 200 && this.status < 400) {
     // Success!
     svgData = JSON.parse(this.response);
+    outerWrapper.classList.remove(introClass);
   } else {
   	console.log(this.status);
   	//TODO: add error messages

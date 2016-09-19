@@ -30,6 +30,7 @@ $svgSprite: '../images/sprite.svg';
 @import 'about';
 @import 'trick-or-treat';
 @import 'error';
+@import 'lightning';
 
 .tab-content .slide svg {
 	width: 135px;
@@ -84,14 +85,16 @@ body {
 	}
 	
 	.byb-outside-wrapper {
-		//display: none;
+		&.is-intro {
+			opacity: 0;
+		}
 	}
 
 	body {
-		//background: url('../images/background-small.jpg') #000000 top center / cover no-repeat;
+		background: url('../images/background-small.jpg') #000000 top center / cover no-repeat;
 
 		@include mq(from, large) {
-			//background-image: url('../images/background-large.jpg');
+			background-image: url('../images/background-large.jpg');
 		}
 	}
 }
