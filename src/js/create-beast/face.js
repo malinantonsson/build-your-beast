@@ -62,8 +62,9 @@ request.onerror = function() {
 
 
 var sliders = $('body').find('.slider');
+var beastHasItems = [];
 
-sliders.each(function(index, parent) {
+sliders.each(function(parentIndex, parent) {
 	//get the parentId (crown, eyes, nose, mouth);
 	var slideId = $(parent).attr('id');
 	var links = $(parent).find('.tab-content-icon-link');
@@ -77,10 +78,19 @@ sliders.each(function(index, parent) {
 		
 		$(link).on('click', function(evt){
 			evt.preventDefault(); //TODO use vanilla js
-			deactivateTabs.activate();
 
 			var index = svgId.replace(/.*?(?=[1-9]|$)/gi, '');
 			beast[slideId].id = index;
+
+			// add to beast items list if slideId hasn't already been added
+			if(beastHasItems.indexOf(slideId) == -1) {
+				beastHasItems.push(slideId);
+			}
+
+			// if all parts have been added, activate share tab
+			if( beastHasItems.length == 4) {
+				deactivateTabs.activate(5);
+			}
 
 			var svgAdd = svgData[slideId][index];
         	$('.byb-canvas-' + slideId).html(svgAdd);

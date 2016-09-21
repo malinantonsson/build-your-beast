@@ -11,10 +11,14 @@ var deactivateTabs = {
 	setCurrentSlide: function(index) {
 		this.settings.currentSlide = index;
 	},
-	activate: function() {
-		var slideIndex = this.settings.currentSlide;
-		var nextSlide = this.ui.tabsLinks[slideIndex + 1];
-
+	activate: function(index) {
+		if (index) {
+			var nextSlide = this.ui.tabsLinks[index];
+		} else {
+			var slideIndex = this.settings.currentSlide;
+			var nextSlide = this.ui.tabsLinks[slideIndex + 1];
+		}
+		
 		if (nextSlide.classList.contains(this.settings.deactiveClass)) {
 		    nextSlide.classList.remove(this.settings.deactiveClass);
 		} 

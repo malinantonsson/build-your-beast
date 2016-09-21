@@ -32,9 +32,10 @@
 	};
 
     var goToTab = function(index) {
-    	//return if the link has not been activated yet
+
+    	//return if share link has not been activated yet
     	if (tabNavigationLinks[index].classList.contains('is-deactivated')) {
-		    return;
+    		return;
 		} 
 
 		if (index !== activeIndex && index >= 0 && index <= tabNavigationLinks.length) {
@@ -44,8 +45,7 @@
 		    tabContentContainers[index].classList.add('is-active');
 		    activeIndex = index;
 			
-			deactivateTabs.setCurrentSlide(index);
-
+			//deactivateTabs.setCurrentSlide(index);
 
 			carousel = tabContentContainers[activeIndex].querySelectorAll('.slider');
 			
