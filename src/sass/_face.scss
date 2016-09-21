@@ -3,6 +3,11 @@
 	margin: auto;
 	position: relative;
 
+	@include mq(from, xlarge) {
+		top: 50%;
+	    transform: translateY(-50%);
+	}
+
 	@media (min-height: 701px) {
 		max-width: 400px;
 	}

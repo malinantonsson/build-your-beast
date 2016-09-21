@@ -38,6 +38,13 @@ html {
 	}
 }
 
+.beast-wrapper {
+	@include mq(from, xlarge) {
+		max-width: 1025px;
+		height: calc(100% - 152px); //minus height of nav
+	}
+}
+
 .active-colour-green {
 	.c-tabs-nav__link {
 	}
