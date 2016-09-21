@@ -101,6 +101,10 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   margin-top: 2em;
   background-color: map-deep-get($colours, base, gray);
 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
   @include mq(from, medium) {
     //min-height: 200px;
       position: absolute;
@@ -132,8 +136,8 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   @include shift(1.33);
 
   @include mq(from, medium) {
-    @include span-columns(1 of 6);
-    @include shift(1);
+    @include span-columns(1.15 of 6);
+    @include shift(.85);
   }
 }
 
@@ -189,12 +193,12 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 
 .is-fixed-heigh {
   @include mq(from, medium) {
-    height: 90px;
+    height: 110px;
   }
 }
 
 .bx-viewport {
-  height: 90px!important;
+  height: 110px!important;
   padding-right: 2em;
   padding-left: 2em;
   position: relative;
