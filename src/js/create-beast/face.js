@@ -79,7 +79,7 @@ sliders.each(function(parentIndex, parent) {
 		$(link).on('click', function(evt){
 			evt.preventDefault(); //TODO use vanilla js
 
-			var index = svgId.replace(/.*?(?=[1-9]|$)/gi, '');
+			var index = svgId.replace(/.*?(?=[0-9]|$)/gi, '');
 			beast[slideId].id = index;
 
 			// add to beast items list if slideId hasn't already been added
