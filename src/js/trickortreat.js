@@ -54,7 +54,7 @@ var svgData;
 
 	var getData = function() {
 		var request = new XMLHttpRequest();
-		request.open('GET', './data/beast-data.json', true);
+		request.open('GET', '/data/beast-data.json', true);
 		request.onload = function() {
 		  if (this.status >= 200 && this.status < 400) {
 		    svgData = JSON.parse(this.response);

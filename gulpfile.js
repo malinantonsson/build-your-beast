@@ -167,6 +167,15 @@ gulp.task('build:pages', ['build:nav', 'build:about'], function () {
         }));
 });
 
+
+gulp.task('trickortreat', function () {
+    return  gulp.src( appPath + '/trickortreat/index.html' )
+        .pipe(gulp.dest( distPath + '/trickortreat/' ))
+        .pipe(browserSync.reload({
+          stream: true
+        }));
+});
+
 gulp.task('pages', function () {
     return  gulp.src( appPath + '/*.html' )
         .pipe(gulp.dest( distPath ))
@@ -278,6 +287,7 @@ gulp.task('dev', ['default', 'setWatch'], function() {
   gulp.watch(['src/sass/**/*.scss'], ['styles', reload]);
   gulp.watch(['src/partials/*.html'], ['build:pages', reload]);
   gulp.watch(['src/*.html'], ['pages', reload]);
+  gulp.watch(['src/trickortreat/index.html'], ['trickortreat', reload]);
   gulp.watch(['src/data/*'], ['build:pages', reload]);
   gulp.watch(['src/img/**/*'], ['images', reload]);
   gulp.watch(['src/js/**/*.js'], ['trickortreat-scripts', 'scripts', reload]);
@@ -293,6 +303,7 @@ gulp.task('default', ['clean'], function (cb) {
       'pages',
       'styles',
       'scripts',
+      'trickortreat',
       'trickortreat-scripts',
       'images',
       'data'
