@@ -14,8 +14,8 @@ if ( twitterButton ) {
          //TWITTER 
         var text = 'Trick or Treat';
         var twitterurl = 'https://twitter.com/intent/tweet?text='+text+'&hashtags=buildyourbeast'+'&url=' + createUrl();
-        
-        window.open(twitterurl + '', 'status = 1, height = 380, width = 500, resizable = 0' );
+
+        window.open(twitterurl, 'twWindow', 'status = 1, height = 380, width = 500, resizable = 0' );
         return false;
     });
 }
