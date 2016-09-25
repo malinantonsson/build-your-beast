@@ -32,6 +32,7 @@ if ( facebookButton ) {
 }
 
 var createUrl = function() {
-    var url = 'http://www.buildyourbeast.co.uk/trickortreat/?h=' + beast.colour.id + '&c=' + beast.crown.id + '&e=' + beast.eyes.id + '&n=' + beast.nose.id + '&m=' + beast.mouth.id;
+    var baseUrl = window.location.href || 'http://www.buildyourbeast.co.uk/';
+    var url = baseUrl + 'trickortreat/?h=' + beast.colour.id + '&c=' + beast.crown.id + '&e=' + beast.eyes.id + '&n=' + beast.nose.id + '&m=' + beast.mouth.id;
     return encodeURIComponent(url);
 };
