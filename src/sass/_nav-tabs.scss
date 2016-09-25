@@ -31,7 +31,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 }
 
 .is-deactivated {
- background-color: $about-card-background!important;
+ background-color: map-deep-get($colours, grays, tabs-inactive)!important;
  cursor: default;
 }
 
