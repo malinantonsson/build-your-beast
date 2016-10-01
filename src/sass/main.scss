@@ -54,6 +54,12 @@ $svgSprite: '../images/sprite.svg';
 	background: #fff;
 }
 
+.beast-wrapper {
+	@include mq(upto, large) {
+		margin: 1em auto auto;
+	}
+}
+
 body {
 	margin: 0;
 	background:#000;
