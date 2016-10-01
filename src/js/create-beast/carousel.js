@@ -1,6 +1,6 @@
 var initCarousel = function(carousel) {
     $(carousel).bxSlider({
-        slideWidth: 205,
+        slideWidth: 180,
         minSlides: 2,
         maxSlides: 6,
         slideMargin: 0,

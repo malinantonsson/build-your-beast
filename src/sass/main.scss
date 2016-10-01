@@ -39,8 +39,11 @@ $svgSprite: '../images/sprite.svg';
 }
 
 .slide {
-	width: 192px!important;
 	height: 100%;
+
+	@include mq(from, large) {
+		width: 192px!important;
+	}
 }
 
 .slider-crown {
