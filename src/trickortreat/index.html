@@ -18,11 +18,37 @@
 
 </head>
 <body id="trick-or-treat" class="active-colour-pink">
-  <div class="intro-lightning">
-      <img src="/images/title.png" class="lightening--dark">
-      <img src="/images/title_lightening.jpg" class="lightening--light-first">
-      <img src="/images/title_lightening2.jpg" class="lightening--light-second">
-    </div>
+    <div class="intro-lightning">
+      <picture>
+          <source srcset="/images/animation/768x1024.png, /images/animation/1536x2048.png 2x" media="(max-width: 768px)">
+
+          <source srcset="/images/animation/1280x800.png, /images/animation/2560x1600.png 2x" media="(max-width: 976px)">
+
+          <source srcset="/images/animation/2048x1331.png, /images/animation/4096x2662.png 2x" media="(min-width: 1024px)">
+
+          <img srcset="/images/animation/1280x800.png, /images/animation/2560x1600.png 2x" alt="My default image"  class="lightening--dark">
+      </picture>
+
+      <picture>
+          <source srcset="/images/animation/768x1024_2.png, /images/animation/1536x2048_2.png 2x" media="(max-width: 768px)">
+
+          <source srcset="/images/animation/1280x800_2.png, /images/animation/2560x1600_2.png 2x" media="(max-width: 976px)">
+
+          <source srcset="/images/animation/2048x1331_2.png, /images/animation/4096x2662_2.png 2x" media="(min-width: 1024px)">
+
+          <img srcset="/images/animation/1280x800_2.png, /images/animation/2560x1600_2.png 2x" alt="My default image"  class="lightening--light-first">
+      </picture>
+
+      <picture>
+          <source srcset="/images/animation/768x1024_3.png, /images/animation/1536x2048_3.png 2x" media="(max-width: 768px)">
+
+          <source srcset="/images/animation/1280x800_3.png, /images/animation/2560x1600_3.png 2x" media="(max-width: 976px)">
+
+          <source srcset="/images/animation/2048x1331_3.png, /images/animation/4096x2662_3.png 2x" media="(min-width: 1024px)">
+
+          <img srcset="/images/animation/1280x800_3.png, /images/animation/2560x1600_3.png 2x" alt="My default image"  class="lightening--light-second">
+      </picture>
+  </div>
 
 	<div class="byb-outside-wrapper is-intro">
     <button type="button" id="byb-btn" class="byb-button">
@@ -81,6 +107,20 @@
 
   <div class="byb-canvas"></div>
 	</div>
+
+  <div class="download-image-wrapper">
+    <button type="button" class="byb-close-btn js-close-image-overlay">
+      <img src="/images/about-close.png" alt="Close about overlay">
+    </button>
+
+    <div class="download-image-content">
+      <p class="download-image-instructions">
+        Press and hold to download your beast
+      </p>
+
+      <img class="js-download-image__image">
+    </div>
+  </div>
     
   
   <script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>

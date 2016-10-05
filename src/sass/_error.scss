@@ -13,5 +13,6 @@
 
 	.has-error & {
 		display: block;
+        z-index: 1;
 	}    
 }

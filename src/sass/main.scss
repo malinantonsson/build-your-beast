@@ -31,6 +31,7 @@ $svgSprite: '../images/sprite.svg';
 @import 'trick-or-treat';
 @import 'error';
 @import 'lightning';
+@import 'download-image';
 
 .tab-content .slide svg {
 	width: 135px;
@@ -38,8 +39,11 @@ $svgSprite: '../images/sprite.svg';
 }
 
 .slide {
-	width: 192px!important;
 	height: 100%;
+
+	@include mq(from, large) {
+		width: 192px!important;
+	}
 }
 
 .slider-crown {
@@ -48,6 +52,12 @@ $svgSprite: '../images/sprite.svg';
 
 #byb-canvas__canvas {
 	background: #fff;
+}
+
+.beast-wrapper {
+	@include mq(upto, large) {
+		margin: 1em auto auto;
+	}
 }
 
 body {

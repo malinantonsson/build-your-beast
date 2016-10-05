@@ -122,10 +122,34 @@ var clearCanvas = function() {
     beastCanvas.fill();
 };
 
+
+var closeImageOverlay = function(btn, overlay) {
+    btn.addEventListener('click', function(e) {
+        overlay.style.display = 'none';
+    });
+};
+
 var initDownload = function() {
+    var imageWrapper = document.querySelector('.download-image-wrapper');
+    var downloadImageContent = document.querySelector('.download-image-content');
+    var imageToDownload = document.querySelector('.js-download-image__image');
+
     downloadButton.addEventListener('click', function(e) {
         var href = getImgData();
-        downloadButton.href = href;
+
+        if((window.Modernizr) && (window.Modernizr.touch)) {
+            e.preventDefault();
+            imageToDownload.src = href;
+
+            downloadImageContent.appendChild(imageToDownload);
+            imageWrapper.style.display = 'block';
+
+            var closeBtn = document.querySelector('.js-close-image-overlay');
+            closeImageOverlay(closeBtn, imageWrapper);
+
+        } else {
+            downloadButton.href = href;
+        }
         return false;
     });
 
