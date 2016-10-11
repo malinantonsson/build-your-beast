@@ -26,7 +26,7 @@
 				<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
 			</filter>
 		</defs>
-		<mask maskUnits="userSpaceOnUse" x="113.961" y="1.565" width="86.167" height="108.476" id="SVGID_5_">
+		<mask maskUnits="userSpaceOnUse" x="113.961" y="1.565" width="86.167" height="108.476" id="nav-nose-11-id-10">
 			<g filter="url(#Adobe_OpacityMaskFilter)">
 				
 					<linearGradient id="nav-nose-11-id-6" gradientUnits="userSpaceOnUse" x1="-139.6323" y1="474.5742" x2="-138.6323" y2="474.5742" gradientTransform="matrix(0 -108.4757 -108.4757 0 51636.7812 -15036.6836)">
@@ -47,7 +47,7 @@
 			<stop  offset="1" style="stop-color:#0C3846"/>
 		</linearGradient>
 		
-			<rect x="113.961" y="1.565" clip-path="url(#nav-nose-11-id-4)" mask="url(#SVGID_5_)" fill="url(#nav-nose-11-id-7)" width="86.167" height="108.476"/>
+			<rect x="113.961" y="1.565" clip-path="url(#nav-nose-11-id-4)" mask="url(#nav-nose-11-id-10)" fill="url(#nav-nose-11-id-7)" width="86.167" height="108.476"/>
 	</g>
 	<g clip-path="url(#nav-nose-11-id-2)">
 		<defs>
