@@ -11,6 +11,8 @@
     var activeIndex = 0;
     var initCalled = false;
     var carousel;
+    var activeOverlay = document.querySelector('.is-active-overlay');
+    var width = '16.7'; 
 
     var init = function() {
 		if (!initCalled) {
@@ -21,6 +23,15 @@
 		      var link = tabNavigationLinks[i];
 		      handleClick(link, i);
 		    }
+
+			var tabsLinkWrapper = document.querySelector('#tabs');
+		    var tabHeight = tabNavigationLinks[0].offsetHeight;
+			var tabWidth = tabContentContainers.offsetWidth / tabNavigationLinks.length;
+
+
+			activeOverlay.style.height = tabHeight + 'px';
+			console.log(activeOverlay);
+
 		}
 	};
 
@@ -44,10 +55,14 @@
 		    tabContentContainers[activeIndex].classList.remove('is-active');
 		    tabContentContainers[index].classList.add('is-active');
 		    activeIndex = index;
+
+		    activeOverlay.style.left = width * activeIndex + '%';
 			
 			//deactivateTabs.setCurrentSlide(index);
 
 			carousel = tabContentContainers[activeIndex].querySelectorAll('.slider');
+
+
 			
 			if( carousel.length > 0 ) {
 				initCarousel(carousel);		   

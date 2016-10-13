@@ -2,6 +2,8 @@
 	<div class="c-tabs-nav">
 		<!--Nav tabs-->
 		<div class="tabs-nav">
+			<div class="is-active-overlay"></div>
+
 			<% _.each(['colour', 'crown', 'eyes', 'nose', 'mouth', 'share'], function(name, index) {  %>
 				<a href="#" class="c-tabs-nav__link <% if (index == 0) { %> is-active <% } %>  <% if (index == 5) { %> is-deactivated <% } %> tab-link-<%= name %>">
 					<svg class="tabs-nav-icon">
