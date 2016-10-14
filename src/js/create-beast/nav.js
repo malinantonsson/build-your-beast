@@ -12,7 +12,7 @@
     var initCalled = false;
     var carousel;
     var activeOverlay = document.querySelector('.is-active-overlay');
-    var width = '16.7'; 
+    var width = '16.6'; 
 
     var init = function() {
 		if (!initCalled) {

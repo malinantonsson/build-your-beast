@@ -15,12 +15,12 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   color: map-deep-get($colours, copy, pink);
   //background-color: map-deep-get($colours, base, pink);
   background-color: transparent;
-  margin-right: 1px;
+  border-right: 1px solid map-deep-get($colours, copy, pink);
 
-  width: 16.6%;
+  width: 16.666%;
 
   &:last-child {
-    margin-right: 0px;
+    border-right: 0px solid map-deep-get($colours, copy, pink);
   }
 
   .active-colour-green & {
@@ -65,7 +65,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 }
 
 .is-active-overlay {
-  width: 16.8%;
+  width: 16.666%;
   position: absolute;
   top: 0;
   left: 0;
