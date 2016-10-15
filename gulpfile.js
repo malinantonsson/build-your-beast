@@ -64,7 +64,7 @@ var config = {
     'ChromeAndroid >= 4.2'
   ],
   version: require('./package.json').version,
-  minify: argv.minify || false
+  minify: argv.minify || true
 };
 
 gulp.task('svg-symbols', function () {
