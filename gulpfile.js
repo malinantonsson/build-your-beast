@@ -122,10 +122,10 @@ gulp.task('minify-svgs', function () {
 
 gulp.task('styles', function() {
   gulp.src('src/sass/**/*.scss')
-  	.pipe(sourcemaps.init()) // Initialize sourcemap plugin
-    .pipe(sass()) 
+  	//.pipe(sourcemaps.init()) // Initialize sourcemap plugin
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer()) // Passes it through gulp-autoprefixer 
-    .pipe(sourcemaps.write()) // Writing sourcemaps 
+    //.pipe(sourcemaps.write()) // Writing sourcemaps 
     .pipe(gulp.dest('dist/css')) // Outputs it in the css folder
     // Reloading the stream
     .pipe(browserSync.reload({
