@@ -192,16 +192,22 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 }
 
 .is-fixed-heigh {
+  height: 90px;
+  
   @include mq(from, medium) {
     height: 110px;
   }
 }
 
 .bx-viewport {
-  height: 110px!important;
+  height: 90px!important;
   padding-right: 2em;
   padding-left: 2em;
   position: relative;
+
+  @include mq(from, medium) {
+    height: 110px;
+  }
 
   &:after,
   &:before {
