@@ -5,7 +5,7 @@
 			<% _.each(['colour', 'crown', 'eyes', 'nose', 'mouth', 'share'], function(name, index) {  %>
 				<a href="#" class="c-tabs-nav__link <% if (index == 0) { %> is-active <% } %>  <% if (index == 5) { %> is-deactivated <% } %> tab-link-<%= name %>">
 					<svg class="tabs-nav-icon">
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/sprite.svg#<%= name %>"></use>
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/sprite.svg#<%= name %>"></use>
                     </svg>
 					<span><%= name %></span>
 				</a>
