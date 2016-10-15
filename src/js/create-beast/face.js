@@ -18,6 +18,7 @@ var finishIntro = function() {
 	setTimeout(function() {
 		outerWrapper.classList.remove(introClass);
 		introWrapper.classList.add(removeIntroClass);
+		outerWrapper.style.display = 'block';
 	}, 1000);
 };
 
