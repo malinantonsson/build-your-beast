@@ -256,10 +256,10 @@ gulp.task('images', function () {
   return gulp.src(['src/images/**/**'])
     .pipe($.plumber({errorHandler: $.notify.onError('Error: <%= error.message %>')}))
     .pipe($.if(config.isWatching, $.cached('images')))
-    .pipe($.if(config.minify, $.cache($.imagemin({
+   /* .pipe($.if(config.minify, $.cache($.imagemin({
       progressive: true,
       interlaced: true
-    }))))
+    }))))*/
     .pipe(gulp.dest('dist/images'));
 });
 

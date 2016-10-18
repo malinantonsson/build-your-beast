@@ -206,7 +206,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   position: relative;
 
   @include mq(from, medium) {
-    height: 110px;
+    height: 110px!important;
   }
 
   &:after,

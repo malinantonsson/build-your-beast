@@ -1,0 +1,37 @@
+.landscape-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2000;
+  background: url('/images/flip_vertical_background.jpg') #000 top center/cover no-repeat;
+
+  @media (min-width: 959px) {
+    display: none;
+  }
+
+  @media (max-aspect-ratio: 13/9) {
+    display: none;
+  }
+}
+
+.landscape-overlay__image {
+    margin: auto;
+    display: block;
+}
+
+.landscape-overlay__copy {
+    color: #ffffff;
+    max-width: 12em;
+    margin: 2em auto auto;
+    text-align: center;
+}
+
+.landscape-overlay__wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+}
