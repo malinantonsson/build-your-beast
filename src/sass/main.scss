@@ -7,105 +7,11 @@ $svgSprite: '../images/sprite.svg';
 /* ----------------------------------------------------------------------------- *\
    MIXINS
 \* ----------------------------------------------------------------------------- */
-@import 'mixins/typography';
+
 @import 'mixins/map-deep-get';
 @import 'mixins/media';
 @import 'mixins/fluid-image-container';
-@import 'mixins/center-crop-absolute';
 @import 'mixins/icon-sprites';
 @import 'mixins/vertical-align';
 
-@import 'variables';
-@import 'typography';
-@import 'button';
-@import 'sprite';
-@import 'icons';
-@import 'placeholders';
-@import 'face';
-@import 'layout';
-@import 'nav-tabs';
-@import 'generic';
-@import 'share';
-@import 'about';
-@import 'trick-or-treat';
-@import 'error';
-@import 'lightning';
-@import 'download-image';
-@import 'utils';
-
-.tab-content .slide svg {
-	width: 135px;
-	display: block;
-}
-
-.slide {
-	height: 100%;
-
-	@include mq(from, large) {
-		width: 192px!important;
-	}
-}
-
-.slider-crown {
-	width: 1025px;
-}
-
-#byb-canvas__canvas {
-	background: #fff;
-}
-
-.beast-wrapper {
-	@include mq(upto, large) {
-		margin: 1em auto auto;
-	}
-}
-
-body {
-	margin: 0;
-	background:#000;
-}
-
-.update-browser-image {
-	max-width: 100%;
-	margin: auto;
-	display: block;
-}
-
-.update-browser-copy {
-	color: #fff;
-	text-align: center;
-}
-
-.update-browser-button {
-	@extend %byb-button;
-	display: block;
-	@include span-columns(3);
-	padding: .5em;
-	text-align: center;
-	text-transform: uppercase;
-
-	color: #ffffff;
-	background-color: map-deep-get($colours, base, pink);
-}
-
-.js.flexbox.canvas {
-
-	.byb-update-browser {
-		display: none;
-	}
-	
-	.byb-outside-wrapper {
-		&.is-intro {
-			opacity: 0;
-		}
-	}
-
-	body {
-		background: url('../images/background-small.jpg') #000000 top center / cover no-repeat;
-
-		@include mq(from, large) {
-			background-image: url('../images/background-large.jpg');
-		}
-	}
-}
 
