@@ -18,8 +18,7 @@ module.exports = {
   },
   browserSync: {
     server: {
-      baseDir: './',
-      proxy: 'zonebpgulp.dev'
+      baseDir: './dist'
     },
     ghostMode: {
       clicks: true,
@@ -38,5 +37,9 @@ module.exports = {
   styles: {
     dist: join('dist', 'styles'),
     src: join('src', 'styles')
+  },
+  html: {
+    dist: join('dist', ''),
+    src: join('src', 'html')
   }
 };

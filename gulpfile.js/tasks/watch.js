@@ -19,6 +19,9 @@ module.exports = function() {
     // Watch .scss files
     gulp.watch(join(config.styles.src, '**', '*.scss'), ['styles']);
 
+    // Watch .scss files
+    gulp.watch(join(config.html.src, '**', '*.html'), ['html']);
+
     // Watch .js files
     bundler.on('update', function() {
         // Build the bundle

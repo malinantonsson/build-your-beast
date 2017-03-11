@@ -8,5 +8,11 @@ module.exports = {
     },
     styles: function(cb) {
         return del('dist/styles', cb);
+    },
+    pages: function(cb) {
+        return del('dist/*.html', cb);
+    },
+    all: function(cb) {
+    	return del('dist', cb);
     }
 };
