@@ -1,10 +1,6 @@
 $img-src: '/images/animation/';
 $img-ext: '.png';
 
-$img-size-md: '768x1024';
-$img-size-lg: '1280x800';
-$img-size-xl: '2048x1331';
-
 $yellow: #FBDCA5;
 
 $imgSizes: small medium xlarge;
@@ -146,5 +142,5 @@ $bpSizeMap: (
 } 
 
 .intro-hidden {
-	//display: none;
+	display: none;
 }
