@@ -1,0 +1,44 @@
+{
+	"1": {
+		"name": "Darren Whitney",
+		"role": "Founder/Lead Designer",
+		"photoUrl": "/images/about/darren.whitney.png",
+		"url": "http://www.darrenwhitney.com/"
+	},
+	"3": {
+		"name": "Cayondreamer",
+		"role": "Character design",
+		"photoUrl": "/images/about/crayondreamer.png",
+		"url": "http://crayondreamer.tumblr.com/"
+	},
+	"4": {
+		"name": "Toby Snowdon",
+		"role": "Character design",
+		"photoUrl": "/images/about/toby.snowdon.png",
+		"url": "https://society6.com/_tms"
+	},
+	"5": {
+		"name": "Tom Addison",
+		"role": "Character design",
+		"photoUrl": "/images/about/tom.addison.png",
+		"url": "http://www.tmaddison.com/"
+	},
+	"6": {
+		"name": "Dines",
+		"role": "Character design",
+		"photoUrl": "/images/about/Dines.png",
+		"url": "http://www.studioblup.com/"
+	},
+	"7": {
+		"name": "Kerry Roper",
+		"role": "Character design",
+		"photoUrl": "/images/about/kerry.png",
+		"url": "http://www.kerryroper.com/"
+	},
+	"8": {
+		"name": "Rom Brisson",
+		"role": "Character design",
+		"photoUrl": "/images/about/rom.brisson.png",
+		"url": "http://www.reservoirfrog.com/"
+	}
+}
