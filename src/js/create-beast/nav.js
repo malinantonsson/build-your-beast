@@ -36,7 +36,7 @@
     	//return if share link has not been activated yet
     	if (tabNavigationLinks[index].classList.contains('is-deactivated')) {
     		return;
-		} 
+		}
 
 		if (index !== activeIndex && index >= 0 && index <= tabNavigationLinks.length) {
 		    tabNavigationLinks[activeIndex].classList.remove('is-active');
@@ -44,13 +44,16 @@
 		    tabContentContainers[activeIndex].classList.remove('is-active');
 		    tabContentContainers[index].classList.add('is-active');
 		    activeIndex = index;
-			
+
 			//deactivateTabs.setCurrentSlide(index);
 
 			carousel = tabContentContainers[activeIndex].querySelectorAll('.slider');
-			
+
 			if( carousel.length > 0 ) {
-				initCarousel(carousel);		   
+        var initialized = tabContentContainers[activeIndex].querySelectorAll('.slick-initialized');
+        if(initialized.length === 0) {
+				      initCarousel(carousel);
+        }
 			}
 
 			if( index === 5) {

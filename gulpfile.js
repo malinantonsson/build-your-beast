@@ -124,7 +124,7 @@ gulp.task('styles', function() {
   gulp.src('src/sass/**/*.scss')
   	.pipe(sourcemaps.init()) // Initialize sourcemap plugin
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(autoprefixer()) // Passes it through gulp-autoprefixer 
+    .pipe(autoprefixer()) // Passes it through gulp-autoprefixer
     .pipe(sourcemaps.write()) // Writing sourcemaps 
     .pipe(gulp.dest('dist/css')) // Outputs it in the css folder
     // Reloading the stream
@@ -155,8 +155,8 @@ gulp.task('build:nav', function () {
     }));
 });
 
-/* 
-Builds out and compiles all the template pages  
+/*
+Builds out and compiles all the template pages
 */
 gulp.task('build:pages', ['build:nav', 'build:about'], function () {
     return  gulp.src( pageBuildSrc )

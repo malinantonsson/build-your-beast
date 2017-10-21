@@ -15,6 +15,7 @@ $svgSprite: '../images/sprite.svg';
 @import 'mixins/icon-sprites';
 @import 'mixins/vertical-align';
 
+@import 'slick';
 @import 'variables';
 @import 'typography';
 @import 'button';
@@ -33,22 +34,7 @@ $svgSprite: '../images/sprite.svg';
 @import 'download-image';
 @import 'utils';
 
-.tab-content .slide svg {
-	width: 135px;
-	display: block;
-}
 
-.slide {
-	height: 100%;
-
-	@include mq(from, large) {
-		width: 192px!important;
-	}
-}
-
-.slider-crown {
-	width: 1025px;
-}
 
 #byb-canvas__canvas {
 	background: #fff;
@@ -93,7 +79,7 @@ body {
 	.byb-update-browser {
 		display: none;
 	}
-	
+
 	.byb-outside-wrapper {
 		&.is-intro {
 			opacity: 0;
@@ -108,4 +94,3 @@ body {
 		}
 	}
 }
-

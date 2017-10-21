@@ -21,12 +21,12 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 
   .active-colour-green & {
     color: map-deep-get($colours, copy, green);
-    background-color: map-deep-get($colours, base, green); 
+    background-color: map-deep-get($colours, base, green);
   }
 
   .active-colour-red & {
     color: map-deep-get($colours, copy, red);
-    background-color: map-deep-get($colours, base, red); 
+    background-color: map-deep-get($colours, base, red);
   }
 }
 
@@ -45,15 +45,15 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   color: #ffffff;
 
   .active-colour-pink & {
-    color: map-deep-get($colours, base, pink); 
+    color: map-deep-get($colours, base, pink);
   }
 
   .active-colour-green & {
-    color: map-deep-get($colours, base, green); 
+    color: map-deep-get($colours, base, green);
   }
 
   .active-colour-red & {
-    color: map-deep-get($colours, base, red); 
+    color: map-deep-get($colours, base, red);
   }
 }
 
@@ -64,6 +64,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 .c-tab {
   display: none;
   background-color: #e7e7e7;
+  height: 90px;
 }
 
 .c-tab.is-active {
@@ -153,7 +154,7 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   display: inline;
   max-width: 24px;
   max-height: 24px;
-  
+
   fill: map-deep-get($colours, copy, pink);
 
   .is-active & {
@@ -178,6 +179,11 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   }
 }
 
+.c-tab__content {
+  padding-right: 2em;
+  padding-left: 2em;
+}
+
 .slide {
   @include vertical-align();
 
@@ -187,33 +193,31 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
   @include vertical-align();
 }
 
-.bx-prev svg{
+.slick-prev svg {
   transform: rotate(180deg);
 }
 
 .is-fixed-heigh {
   height: 90px;
-  
+
   @include mq(from, medium) {
     height: 110px;
   }
 }
 
-.bx-viewport {
+.slick-track {
   height: 90px!important;
-  padding-right: 2em;
-  padding-left: 2em;
   position: relative;
 
-  @include mq(from, medium) {
-    height: 110px!important;
-  }
+  // @include mq(from, medium) {
+  //   height: 110px!important;
+  // }
 
   &:after,
   &:before {
     background-color:  map-deep-get($colours, base, gray);
     z-index: map-get($z-index, tabs-pagination-bg);
-    position: absolute; 
+    position: absolute;
     top: 0;
     width: 2em;
     height: 160px;
@@ -232,37 +236,61 @@ $nav-items: "colour" "crown" "eyes" "nose" "mouth" "share";
 .bx-wrapper {
   position: relative;
 }
-.bx-prev,
-.bx-next {
+.slick-arrow {
   position: absolute;
   @include vertical-align(absolute);
   z-index: map-get($z-index, tabs-pagination);
   fill: map-deep-get($colours, base, pink);
 
   .active-colour-green & {
-    fill: map-deep-get($colours, base, green); 
+    fill: map-deep-get($colours, base, green);
   }
 
   .active-colour-red & {
-    fill: map-deep-get($colours, base, red); 
+    fill: map-deep-get($colours, base, red);
   }
 }
 
-.bx-next {
+.slick-next {
   right: .7em;
 }
 
-.bx-prev {
+.slick-prev {
   left: .7em;
 }
 
 .tab-content-icon-link {
   display: block;
   height: 100%;
+  margin: auto;
 }
 
 .c-tab__content--share {
   overflow: hidden;
   padding-bottom: 1em;
   padding-top: 1em;
+}
+
+.tab-content-icon-link ,
+.tab-content .slide svg {
+	width: 135px;
+	display: block;
+  max-width: 100%;
+
+  // @include mq(from, large) {
+	// 	width: 192px!important;
+	// }
+}
+
+.slide {
+	height: 100%;
+  //width: 135px!important;
+
+	// @include mq(from, large) {
+	// 	width: 192px!important;
+	// }
+}
+
+.slider-crown {
+	//width: 1025px;
 }
