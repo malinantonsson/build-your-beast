@@ -30,8 +30,8 @@ $bpSizeMap: (
 @mixin animationImages($size, $nr, $color: #000) {
     @if $size == 'small' {
         background-image: url('#{$img-src}#{map-deep-get($bpSizeMap, $size, size)}_#{$nr}#{$img-ext}');
-        /* @media (-webkit-min-device-pixel-ratio: 2), 
-            (min-resolution: 192dpi) { 
+        /* @media (-webkit-min-device-pixel-ratio: 2),
+            (min-resolution: 192dpi) {
             background-image: url('#{$img-src}#{map-deep-get($bpSizeMap, $size, retina)}_#{$nr}#{$img-ext}');
         } */
     }
@@ -41,7 +41,7 @@ $bpSizeMap: (
             background-size: cover;
         }
     }
-    
+
 }
 
 @mixin background($color: #000) {
@@ -62,22 +62,22 @@ $bpSizeMap: (
 
 @keyframes lightening {
     0% {
-	    opacity: 0; 
+	    opacity: 0;
 	}
 	84% {
 		opacity: 0
 	}
-	
+
 	85%, 90% {
-	    opacity: 1; 
+	    opacity: 1;
 	}
 	91% {
 		opacity: 0;
 	}
-	
+
 	100% {
-	    opacity: 0; 
-	} 
+	    opacity: 0;
+	}
 }
 
 
@@ -85,28 +85,29 @@ $bpSizeMap: (
   0% {
     opacity: 0; }
   100% {
-    opacity: 1; } 
+    opacity: 1; }
 }
 
 .intro-lightning {
     background-color: #000;
+    height: 100vh;
 }
 
 .intro-lightning .lightening--dark {
     @include background();
-    
+
 
     @each $size in $imgSizes {
         @include animationImages($size, 1);
     }
 
-    animation: fadeIn 1s forwards;  
+    animation: fadeIn 1s forwards;
     z-index: 9;
 }
 
 .intro-lightning .lightening--light-first {
     @include background($yellow);
-    
+
 
     @each $size in $imgSizes {
         @include animationImages($size, 2);
@@ -117,7 +118,7 @@ $bpSizeMap: (
 
 .intro-lightning .lightening--light-second {
     @include background($yellow);
-    
+
 
     @each $size in $imgSizes {
         @include animationImages($size, 3);
@@ -130,7 +131,7 @@ $bpSizeMap: (
 
 .intro-end {
 	animation: fadeIn 1s forwards reverse;
-	
+
 	.lightening--light-first,
 	.lightening--light-second {
 		animation: none;
@@ -139,7 +140,7 @@ $bpSizeMap: (
 	.lightening--dark  {
 		opacity: 0;
 	}
-} 
+}
 
 .intro-hidden {
 	display: none;
